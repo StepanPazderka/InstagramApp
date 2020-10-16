@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "__opt__aboutcom__coeus__resources__content_migration__mnn__images__2018__04__sunset_through_oak_tree-62e69b4cce454afbba72c16f9558061c.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
