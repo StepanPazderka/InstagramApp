@@ -14,7 +14,7 @@ class AddItemVC: UIViewController {
     
     var id = UUID()
     var fm = FileManager.default
-    
+    var delegate: HomeVC?
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -25,6 +25,11 @@ class AddItemVC: UIViewController {
         post.label = textField.text
         post.image = id.uuidString // Just stores name of the image
         sharedImageManager.saveImage(image: imageView.image!, name: self.id.uuidString)
+
+        guard delegate != nil else {
+            print("Delegate not found")
+            return
+        }
         
         do {
             try self.context.save()
@@ -32,6 +37,10 @@ class AddItemVC: UIViewController {
         } catch {
             
         }
+        
+        self.dismiss(animated: true, completion: nil)
+        delegate!.fetchData()
+        delegate!.tableView.reloadData()
     }
     
     var mainBundlePath = Bundle.main.resourcePath!
@@ -45,18 +54,20 @@ class AddItemVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = sharedImageManager.loadImage(image: "MyName.jpg")
+        //imageView.image = sharedImageManager.loadImage(image: "MyName.jpg")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         id = UUID() //Generuje unikatni UUID
+        if let test = delegate {
+            print("Delegate set to: \(delegate!)")
+        }
     }
 }
 
 extension AddItemVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
-//            sharedImageManager.saveImage(image: image, name: "MyName.jpg")
             imageView.image = image
         } else {
             print("None image selected")

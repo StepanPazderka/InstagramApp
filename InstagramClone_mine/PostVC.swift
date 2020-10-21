@@ -7,10 +7,10 @@
 
 import UIKit
 
-class PostVC: UITableViewCell {
-
+class PostVC: UITableViewCell {    
     @IBOutlet var postLabel: UILabel!
     @IBOutlet var postImage: UIImageView!
+    @IBOutlet weak var commentButton: CustomCommentButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,9 +19,8 @@ class PostVC: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
 }
 

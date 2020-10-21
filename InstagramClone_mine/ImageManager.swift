@@ -16,14 +16,14 @@ class ImageManager {
         return paths[0]
     }
     
-    init() {
-        
+    func retrieveFullImagePath(imageName: String) -> String {
+        return sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path
     }
     
     func saveImage(image: UIImage, name: String) {
         if let data = image.jpegData(compressionQuality: 0.9) {
             do {
-                let fullPathWithFilename = galleryPath.appendingPathComponent(name)
+                let fullPathWithFilename: URL = galleryPath.appendingPathComponent(name).appendingPathExtension("jpg")
                 print("Writing data to \(fullPathWithFilename)")
                 try data.write(to: fullPathWithFilename)
             } catch {
@@ -34,19 +34,32 @@ class ImageManager {
     
     func loadImage(image: String) -> UIImage {
         let loadedImage: UIImage!
-        let documentDirectory = sharedImageManager.galleryPath
-        let fullFilePath = documentDirectory.appendingPathComponent(image)
-        print("Trying to load image from: \(fullFilePath)")
-        loadedImage = UIImage(contentsOfFile: fullFilePath.path)
+        print("Trying to load image from: \(retrieveFullImagePath(imageName: image))")
+        loadedImage = UIImage(contentsOfFile: retrieveFullImagePath(imageName: image))
         return loadedImage
+    }
+    
+    func deleteImage(name: String) {
+        let fullPath = retrieveFullImagePath(imageName: name)
+        
+        do {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: fullPath))
+        } catch {
+            print("Couldnt delete image")
+        }
     }
     
     func listSavedImages() -> [String] {
         let fm = FileManager.default
+        var fullPathImages: [String] = []
         let listedImages = try! fm.contentsOfDirectory(atPath: sharedImageManager.galleryPath.path)
-//        for image in listedImages {
-//            print("Found image: \(image)")
-//        }
-        return listedImages
+        
+        for imageName in listedImages {
+            var newPath: URL = URL(fileURLWithPath: sharedImageManager.galleryPath.absoluteString)
+            newPath = newPath.appendingPathComponent(imageName)
+            fullPathImages.append(newPath.absoluteString)
+        }
+        
+        return fullPathImages
     }
 }

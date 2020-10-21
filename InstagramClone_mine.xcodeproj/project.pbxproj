@@ -84,12 +84,12 @@
 				AA4DA54E2535163800BF435E /* CameraVC.swift */,
 				AA4DA55E253667C800BF435E /* AddItemVC.swift */,
 				AA9AAB292538C2BE0003203C /* DetailVC.swift */,
+				AA4DA56225374FE100BF435E /* ImageManager.swift */,
 				AA4DA54A2533E6AF00BF435E /* Main.storyboard */,
 				AA44643B253243880091896A /* LaunchScreen.storyboard */,
 				AA446439253243880091896A /* Assets.xcassets */,
 				AA44643E253243880091896A /* Info.plist */,
 				AA4DA553253628D400BF435E /* Model.xcdatamodeld */,
-				AA4DA56225374FE100BF435E /* ImageManager.swift */,
 			);
 			path = InstagramClone_mine;
 			sourceTree = "<group>";
