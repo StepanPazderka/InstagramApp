@@ -15,6 +15,10 @@ protocol PostSelectionDelegate {
 class HomeVC: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
+        
+    }
+    
+    func MoveToDetailView(id: UUID, sender: CustomCommentButton) {
         performSegue(withIdentifier: "showDetail", sender: sender)
         self.selectedID = sender.id!.uuidString
         print("Selected ID: \(sender.id!)")
@@ -37,6 +41,9 @@ class HomeVC: UIViewController {
         for imageName in sharedImageManager.listSavedImages() {
             print(imageName)
         }
+        
+        let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
+        self.tableView.register(nib, forCellReuseIdentifier: "Post")
         
         print(ImageManager())
     }
@@ -82,7 +89,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! PostVC
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeTableViewCell
+        cell.delegate = self
         cell.postLabel.text = self.postsArray[indexPath.row].label
         let imageName: String = self.postsArray[indexPath.row].image!
         cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
