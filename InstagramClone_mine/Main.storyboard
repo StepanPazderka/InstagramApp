@@ -91,52 +91,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzO-Z1-nzZ">
-                                <rect key="frame" x="170" y="108" width="74" height="30"/>
-                                <state key="normal" title="Add Image"/>
-                                <connections>
-                                    <action selector="AddImage:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="s4S-NI-LYh"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
-                                <rect key="frame" x="-193" y="289" width="800" height="398"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
-                                <rect key="frame" x="20" y="146" width="374" height="128"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="I6z-TP-O5k"/>
-                                    <constraint firstAttribute="width" constant="374" id="rIh-9h-ccw"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="vdj-ra-Ogg"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-84-sqt">
-                                <rect key="frame" x="177.5" y="732" width="59" height="49"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <state key="normal" title="Post"/>
-                                <connections>
-                                    <action selector="tappedPost:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="qUm-Jt-zq8"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-0l-AYH">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzO-Z1-nzZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="cvj-Ao-6xQ"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Image"/>
+                                        <connections>
+                                            <action selector="AddImage:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="s4S-NI-LYh"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="584"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
+                                        <rect key="frame" x="0.0" y="634" width="414" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="I6z-TP-O5k"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="vdj-ra-Ogg"/>
+                                        </constraints>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-84-sqt">
+                                        <rect key="frame" x="0.0" y="762" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="5Jo-4D-4BH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                        <state key="normal" title="Post"/>
+                                        <connections>
+                                            <action selector="tappedPost:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="qUm-Jt-zq8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lsn-wg-Ukd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Lsn-wg-Ukd" firstAttribute="bottom" secondItem="aw7-84-sqt" secondAttribute="bottom" constant="32" id="2P6-kO-bSm"/>
-                            <constraint firstItem="NzO-Z1-nzZ" firstAttribute="top" secondItem="Lsn-wg-Ukd" secondAttribute="top" constant="20" id="Hxw-M9-HiQ"/>
-                            <constraint firstItem="aw7-84-sqt" firstAttribute="centerX" secondItem="Lsn-wg-Ukd" secondAttribute="centerX" id="Va9-6f-k2z"/>
-                            <constraint firstItem="NzO-Z1-nzZ" firstAttribute="centerX" secondItem="Lsn-wg-Ukd" secondAttribute="centerX" id="hP5-qG-Zhd"/>
-                            <constraint firstItem="KEQ-q5-tTX" firstAttribute="top" secondItem="NzO-Z1-nzZ" secondAttribute="bottom" constant="8" id="hqM-u7-Fxg"/>
-                            <constraint firstItem="KEQ-q5-tTX" firstAttribute="centerX" secondItem="Qbk-Fo-Yvo" secondAttribute="centerX" id="nRn-JN-1L3"/>
-                            <constraint firstItem="aw7-84-sqt" firstAttribute="top" secondItem="NuH-l3-b0j" secondAttribute="bottom" constant="45" id="ngv-1S-02s"/>
-                            <constraint firstItem="NuH-l3-b0j" firstAttribute="top" secondItem="KEQ-q5-tTX" secondAttribute="bottom" constant="15" id="vuK-z7-kJu"/>
-                            <constraint firstItem="KEQ-q5-tTX" firstAttribute="centerX" secondItem="Lsn-wg-Ukd" secondAttribute="centerX" id="vuN-M5-zg9"/>
-                            <constraint firstItem="KEQ-q5-tTX" firstAttribute="top" secondItem="NzO-Z1-nzZ" secondAttribute="bottom" constant="8" id="wen-Dw-HQ9"/>
-                            <constraint firstItem="NuH-l3-b0j" firstAttribute="centerX" secondItem="Lsn-wg-Ukd" secondAttribute="centerX" id="xey-WN-Qf4"/>
+                            <constraint firstItem="uvK-0l-AYH" firstAttribute="leading" secondItem="Lsn-wg-Ukd" secondAttribute="leading" id="18I-tO-n3E"/>
+                            <constraint firstItem="uvK-0l-AYH" firstAttribute="top" secondItem="Lsn-wg-Ukd" secondAttribute="top" id="3Mm-f2-Xjq"/>
+                            <constraint firstAttribute="bottom" secondItem="uvK-0l-AYH" secondAttribute="bottom" constant="30" id="tjn-fN-Wyn"/>
+                            <constraint firstAttribute="trailing" secondItem="uvK-0l-AYH" secondAttribute="trailing" id="v02-3S-vaJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wP3-QY-mES"/>
