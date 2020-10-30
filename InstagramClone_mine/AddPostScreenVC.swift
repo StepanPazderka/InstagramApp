@@ -8,7 +8,7 @@
 import UIKit
 import Foundation
 
-class AddItemVC: UIViewController {
+class AddPostScreenVC: UIViewController {
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     lazy var context = appDelegate.persisentContainer.viewContext
     
@@ -18,6 +18,23 @@ class AddItemVC: UIViewController {
     @IBOutlet weak var textField: UITextView!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var AddImageButton: UIButton!
+    
+    @IBAction func imageTapped(_ sender: Any) {
+        let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
+        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { (closure: UIAlertAction) in
+            let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.delegate = self
+                self.present(picker, animated: true)
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertDialog.addAction(cancelButton)
+        alertDialog.addAction(galleryButton)
+        self.present(alertDialog, animated: true, completion: nil)
+        print("User tapped image")
+    }
     @IBAction func tappedPost(_ sender: Any) {
         let post = Post(context: context)
         post.date = Date()
@@ -45,13 +62,6 @@ class AddItemVC: UIViewController {
     
     var mainBundlePath = Bundle.main.resourcePath!
     
-    @IBAction func AddImage(_ sender: Any) {
-        let picker = UIImagePickerController()
-            picker.allowsEditing = true
-            picker.delegate = self
-            present(picker, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //imageView.image = sharedImageManager.loadImage(image: "MyName.jpg")
@@ -59,16 +69,20 @@ class AddItemVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         id = UUID() //Generuje unikatni UUID
-        if let test = delegate {
+        if delegate != nil {
             print("Delegate set to: \(delegate!)")
+        }
+        if (imageView.image == nil) {
+            AddImageButton.isHidden = false
         }
     }
 }
 
-extension AddItemVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             imageView.image = image
+            AddImageButton.isHidden = true
         } else {
             print("None image selected")
         }

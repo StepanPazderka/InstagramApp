@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol moveToDetailView {
+    func MoveToDetailView(id: UUID, sender: CustomCommentButton)
+}
+
 class HomeTableViewCell: UITableViewCell {
     var delegate: HomeVC!
     

@@ -12,7 +12,7 @@ protocol PostSelectionDelegate {
     
 }
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, moveToDetailView {
     @IBOutlet var tableView: UITableView!
     @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
         
@@ -59,7 +59,7 @@ class HomeVC: UIViewController {
             vc.HomeVC = self
         }
         if segue.identifier == "addItemSegue" {
-            let vc = segue.destination as! AddItemVC
+            let vc = segue.destination as! AddPostScreenVC
             vc.delegate = self
         }
     }

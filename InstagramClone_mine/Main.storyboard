@@ -19,43 +19,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2HU-3m-Ac6">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Post2" rowHeight="350" translatesAutoresizingMaskIntoConstraints="NO" id="zXZ-WH-0rA" customClass="PostVC" customModule="InstagramClone_mine" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="350"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zXZ-WH-0rA" translatesAutoresizingMaskIntoConstraints="NO" id="J2n-ir-P7e">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U1v-bO-xol">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqe-W4-Ehq">
-                                                    <rect key="frame" x="40" y="306" width="347" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0R-jQ-6AG" userLabel="Comment Button" customClass="CustomCommentButton" customModule="InstagramClone_mine" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="317" width="22" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="message" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="commentButtonClicked:" destination="52l-Uw-Xbm" eventType="touchUpInside" id="FlL-pX-pRf"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="U1v-bO-xol" firstAttribute="top" secondItem="J2n-ir-P7e" secondAttribute="top" id="TV5-tO-OQU"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="commentButton" destination="c0R-jQ-6AG" id="UNT-Ay-WLJ"/>
-                                            <outlet property="postImage" destination="U1v-bO-xol" id="0lS-gp-nLT"/>
-                                            <outlet property="postLabel" destination="Xqe-W4-Ehq" id="Sc9-jR-j3f"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JoY-IO-H30"/>
@@ -83,46 +46,60 @@
             </objects>
             <point key="canvasLocation" x="1818.840579710145" y="-154.01785714285714"/>
         </scene>
-        <!--Add ItemVC-->
+        <!--Add Post ScreenVC-->
         <scene sceneID="9Az-XU-NCg">
             <objects>
-                <viewController id="UHT-aJ-yKb" customClass="AddItemVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UHT-aJ-yKb" customClass="AddPostScreenVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qbk-Fo-Yvo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-0l-AYH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="778"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NzO-Z1-nzZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FA-DG-gAy">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="598"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
+                                                <rect key="frame" x="0.0" y="-18" width="414" height="634"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="bhH-I8-CyL" appends="YES" id="JNQ-5v-J9I"/>
+                                                </connections>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-ZF-OUQ">
+                                                <rect key="frame" x="139.5" y="275.5" width="135" height="47"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                                <state key="normal" title="Add Image"/>
+                                                <connections>
+                                                    <action selector="imageTapped:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="jka-o4-i9m"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="cvj-Ao-6xQ"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="height" secondItem="8FA-DG-gAy" secondAttribute="height" multiplier="1.0602" id="J1d-Ak-425"/>
+                                            <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="MHT-Mh-jYc"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="OHd-aX-tJ9"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="UxU-38-WzE"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="width" secondItem="8FA-DG-gAy" secondAttribute="width" id="cLr-9T-DW6"/>
+                                            <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="gbY-uY-1lt"/>
                                         </constraints>
-                                        <state key="normal" title="Add Image"/>
-                                        <connections>
-                                            <action selector="AddImage:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="s4S-NI-LYh"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="584"/>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
-                                        <rect key="frame" x="0.0" y="634" width="414" height="128"/>
+                                    </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
+                                        <rect key="frame" x="0.0" y="598" width="414" height="100"/>
                                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="128" id="I6z-TP-O5k"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="128" id="vdj-ra-Ogg"/>
+                                            <constraint firstAttribute="height" constant="100" id="ZYx-al-7Qf"/>
                                         </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-84-sqt">
-                                        <rect key="frame" x="0.0" y="762" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="698" width="414" height="80"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="5Jo-4D-4BH"/>
+                                            <constraint firstAttribute="height" constant="80" id="rey-27-7x9"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                         <state key="normal" title="Post"/>
@@ -136,21 +113,27 @@
                         <viewLayoutGuide key="safeArea" id="Lsn-wg-Ukd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uvK-0l-AYH" firstAttribute="leading" secondItem="Lsn-wg-Ukd" secondAttribute="leading" id="18I-tO-n3E"/>
-                            <constraint firstItem="uvK-0l-AYH" firstAttribute="top" secondItem="Lsn-wg-Ukd" secondAttribute="top" id="3Mm-f2-Xjq"/>
-                            <constraint firstAttribute="bottom" secondItem="uvK-0l-AYH" secondAttribute="bottom" constant="30" id="tjn-fN-Wyn"/>
-                            <constraint firstAttribute="trailing" secondItem="uvK-0l-AYH" secondAttribute="trailing" id="v02-3S-vaJ"/>
+                            <constraint firstItem="Lsn-wg-Ukd" firstAttribute="bottom" secondItem="uvK-0l-AYH" secondAttribute="bottom" constant="10" id="0my-KF-3Dz"/>
+                            <constraint firstItem="uvK-0l-AYH" firstAttribute="trailing" secondItem="Lsn-wg-Ukd" secondAttribute="trailing" id="3Tt-QR-nmy"/>
+                            <constraint firstItem="uvK-0l-AYH" firstAttribute="top" secondItem="Lsn-wg-Ukd" secondAttribute="top" constant="20" id="7S1-tE-u42"/>
+                            <constraint firstItem="uvK-0l-AYH" firstAttribute="leading" secondItem="Lsn-wg-Ukd" secondAttribute="leading" id="Pw8-dU-qnf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wP3-QY-mES"/>
                     <connections>
+                        <outlet property="AddImageButton" destination="BkW-ZF-OUQ" id="qHL-OB-i1w"/>
                         <outlet property="imageView" destination="NuH-l3-b0j" id="ZAE-6b-Hem"/>
                         <outlet property="textField" destination="KEQ-q5-tTX" id="exa-9N-3Q3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9S-sG-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="bhH-I8-CyL">
+                    <connections>
+                        <action selector="imageTapped:" destination="UHT-aJ-yKb" id="fRm-ru-cyO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2690" y="-359"/>
+            <point key="canvasLocation" x="2667" y="-387"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="w9w-db-aEK">
@@ -255,8 +238,6 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <image name="message" catalog="system" width="128" height="113"/>
-        <image name="mona" width="800" height="1210"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
