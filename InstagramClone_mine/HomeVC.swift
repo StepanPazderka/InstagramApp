@@ -95,6 +95,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let imageName: String = self.postsArray[indexPath.row].image!
         cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
+        cell.selectionStyle = .none
         return cell
     }
     

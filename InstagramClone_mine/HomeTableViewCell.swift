@@ -21,7 +21,6 @@ class HomeTableViewCell: UITableViewCell {
         delegate.MoveToDetailView(id: commentButton.id!, sender: commentButton)
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
