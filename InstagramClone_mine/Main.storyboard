@@ -61,7 +61,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="598"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
-                                                <rect key="frame" x="0.0" y="-18" width="414" height="634"/>
+                                                <rect key="frame" x="0.0" y="30" width="414" height="538"/>
                                                 <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="bhH-I8-CyL" appends="YES" id="JNQ-5v-J9I"/>
@@ -78,12 +78,14 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="height" secondItem="8FA-DG-gAy" secondAttribute="height" multiplier="1.0602" id="J1d-Ak-425"/>
+                                            <constraint firstAttribute="trailing" secondItem="NuH-l3-b0j" secondAttribute="trailing" id="9eu-db-get"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="top" secondItem="8FA-DG-gAy" secondAttribute="top" constant="30" id="Ci1-hV-Zuz"/>
+                                            <constraint firstAttribute="bottom" secondItem="NuH-l3-b0j" secondAttribute="bottom" constant="30" id="D6s-Gr-tIK"/>
                                             <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="MHT-Mh-jYc"/>
                                             <constraint firstItem="NuH-l3-b0j" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="OHd-aX-tJ9"/>
                                             <constraint firstItem="NuH-l3-b0j" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="UxU-38-WzE"/>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="width" secondItem="8FA-DG-gAy" secondAttribute="width" id="cLr-9T-DW6"/>
                                             <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="gbY-uY-1lt"/>
+                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="leading" secondItem="8FA-DG-gAy" secondAttribute="leading" id="yl7-g7-fG5"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
@@ -95,6 +97,9 @@
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="UHT-aJ-yKb" id="6NJ-OL-jIL"/>
+                                        </connections>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-84-sqt">
                                         <rect key="frame" x="0.0" y="698" width="414" height="80"/>
@@ -123,7 +128,7 @@
                     <connections>
                         <outlet property="AddImageButton" destination="BkW-ZF-OUQ" id="qHL-OB-i1w"/>
                         <outlet property="imageView" destination="NuH-l3-b0j" id="ZAE-6b-Hem"/>
-                        <outlet property="textField" destination="KEQ-q5-tTX" id="exa-9N-3Q3"/>
+                        <outlet property="textView" destination="KEQ-q5-tTX" id="exa-9N-3Q3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f9S-sG-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,17 +205,17 @@
             </objects>
             <point key="canvasLocation" x="909" y="-154"/>
         </scene>
-        <!--Camera-->
+        <!--Profile-->
         <scene sceneID="NlQ-tH-crx">
             <objects>
-                <viewController id="JHr-dT-mgW" customClass="CameraVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JHr-dT-mgW" customClass="ProfileVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKa-zV-R0h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zNI-4Q-MIj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera" catalog="system" id="0pY-Oq-pWq"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="0pY-Oq-pWq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97x-V2-jq7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -237,8 +242,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

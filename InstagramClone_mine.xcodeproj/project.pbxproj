@@ -13,7 +13,7 @@
 		AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44643B253243880091896A /* LaunchScreen.storyboard */; };
 		AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA5402533BC3C00BF435E /* HomeVC.swift */; };
 		AA4DA54B2533E6AF00BF435E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4DA54A2533E6AF00BF435E /* Main.storyboard */; };
-		AA4DA54F2535163900BF435E /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* CameraVC.swift */; };
+		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
 		AA4DA55F253667C900BF435E /* AddPostScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
@@ -35,7 +35,7 @@
 		AA44643E253243880091896A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA4DA5402533BC3C00BF435E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		AA4DA54A2533E6AF00BF435E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		AA4DA54E2535163800BF435E /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
+		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostScreenVC.swift; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 				AA446430253243840091896A /* AppDelegate.swift */,
 				AA446432253243840091896A /* SceneDelegate.swift */,
 				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
-				AA4DA54E2535163800BF435E /* CameraVC.swift */,
+				AA4DA54E2535163800BF435E /* ProfileVC.swift */,
 				AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */,
 				AA9AAB292538C2BE0003203C /* DetailVC.swift */,
 				AA4DA56225374FE100BF435E /* ImageManager.swift */,
@@ -183,7 +183,7 @@
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
 				AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */,
 				AA9AAB2A2538C2BE0003203C /* DetailVC.swift in Sources */,
-				AA4DA54F2535163900BF435E /* CameraVC.swift in Sources */,
+				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
 				AA9AAB252538B54A0003203C /* Post+CoreDataProperties.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
 				AA9AAB242538B54A0003203C /* Post+CoreDataClass.swift in Sources */,

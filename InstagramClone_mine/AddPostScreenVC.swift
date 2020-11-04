@@ -15,14 +15,13 @@ class AddPostScreenVC: UIViewController {
     var id = UUID()
     var fm = FileManager.default
     var delegate: HomeVC?
-    @IBOutlet weak var textField: UITextView!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var debugLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var AddImageButton: UIButton!
-    
     @IBAction func imageTapped(_ sender: Any) {
         let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
-        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { (closure: UIAlertAction) in
+        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { action in
             let picker = UIImagePickerController()
                 picker.allowsEditing = true
                 picker.delegate = self
@@ -36,10 +35,19 @@ class AddPostScreenVC: UIViewController {
         print("User tapped image")
     }
     @IBAction func tappedPost(_ sender: Any) {
+        guard (imageView.image != nil) else {
+            let alert = UIAlertController(title: "Can't post", message: "You have to pick image", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let post = Post(context: context)
         post.date = Date()
         post.id = id
-        post.label = textField.text
+        post.label = textView.text
         post.image = id.uuidString // Just stores name of the image
         sharedImageManager.saveImage(image: imageView.image!, name: self.id.uuidString)
 
@@ -64,6 +72,8 @@ class AddPostScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textView.delegate = self
+        textView.textColor = .darkGray
         //imageView.image = sharedImageManager.loadImage(image: "MyName.jpg")
     }
     
@@ -78,7 +88,7 @@ class AddPostScreenVC: UIViewController {
     }
 }
 
-extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             imageView.image = image
@@ -92,3 +102,18 @@ extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControl
         dismiss(animated: true, completion: nil)
     }
 }
+
+extension AddPostScreenVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text.removeAll()
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.textColor = .darkGray
+            textView.text = "Please enter text"
+        }
+    }
+}
+
