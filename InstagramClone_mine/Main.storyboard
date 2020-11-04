@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" title="Stream" id="v36-hQ-ciR">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="n9Z-e0-ejN">
                             <connections>
-                                <segue destination="UHT-aJ-yKb" kind="presentation" identifier="addItemSegue" id="Ter-P3-lPj"/>
+                                <action selector="AddPostButtonPressed:" destination="52l-Uw-Xbm" id="RaC-M4-61L"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -45,100 +45,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x7U-mE-Rqn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1818.840579710145" y="-154.01785714285714"/>
-        </scene>
-        <!--Add Post ScreenVC-->
-        <scene sceneID="9Az-XU-NCg">
-            <objects>
-                <viewController id="UHT-aJ-yKb" customClass="AddPostScreenVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qbk-Fo-Yvo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uvK-0l-AYH">
-                                <rect key="frame" x="0.0" y="20" width="414" height="778"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8FA-DG-gAy">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="598"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-l3-b0j">
-                                                <rect key="frame" x="0.0" y="30" width="414" height="538"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="bhH-I8-CyL" appends="YES" id="JNQ-5v-J9I"/>
-                                                </connections>
-                                            </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkW-ZF-OUQ">
-                                                <rect key="frame" x="139.5" y="275.5" width="135" height="47"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                <state key="normal" title="Add Image"/>
-                                                <connections>
-                                                    <action selector="imageTapped:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="jka-o4-i9m"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="NuH-l3-b0j" secondAttribute="trailing" id="9eu-db-get"/>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="top" secondItem="8FA-DG-gAy" secondAttribute="top" constant="30" id="Ci1-hV-Zuz"/>
-                                            <constraint firstAttribute="bottom" secondItem="NuH-l3-b0j" secondAttribute="bottom" constant="30" id="D6s-Gr-tIK"/>
-                                            <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="MHT-Mh-jYc"/>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="centerX" secondItem="8FA-DG-gAy" secondAttribute="centerX" id="OHd-aX-tJ9"/>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="UxU-38-WzE"/>
-                                            <constraint firstItem="BkW-ZF-OUQ" firstAttribute="centerY" secondItem="8FA-DG-gAy" secondAttribute="centerY" id="gbY-uY-1lt"/>
-                                            <constraint firstItem="NuH-l3-b0j" firstAttribute="leading" secondItem="8FA-DG-gAy" secondAttribute="leading" id="yl7-g7-fG5"/>
-                                        </constraints>
-                                    </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Please enter text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KEQ-q5-tTX">
-                                        <rect key="frame" x="0.0" y="598" width="414" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemGray2Color"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="ZYx-al-7Qf"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="UHT-aJ-yKb" id="6NJ-OL-jIL"/>
-                                        </connections>
-                                    </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aw7-84-sqt">
-                                        <rect key="frame" x="0.0" y="698" width="414" height="80"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="rey-27-7x9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                        <state key="normal" title="Post"/>
-                                        <connections>
-                                            <action selector="tappedPost:" destination="UHT-aJ-yKb" eventType="touchUpInside" id="qUm-Jt-zq8"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Lsn-wg-Ukd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Lsn-wg-Ukd" firstAttribute="bottom" secondItem="uvK-0l-AYH" secondAttribute="bottom" constant="10" id="0my-KF-3Dz"/>
-                            <constraint firstItem="uvK-0l-AYH" firstAttribute="trailing" secondItem="Lsn-wg-Ukd" secondAttribute="trailing" id="3Tt-QR-nmy"/>
-                            <constraint firstItem="uvK-0l-AYH" firstAttribute="top" secondItem="Lsn-wg-Ukd" secondAttribute="top" constant="20" id="7S1-tE-u42"/>
-                            <constraint firstItem="uvK-0l-AYH" firstAttribute="leading" secondItem="Lsn-wg-Ukd" secondAttribute="leading" id="Pw8-dU-qnf"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="wP3-QY-mES"/>
-                    <connections>
-                        <outlet property="AddImageButton" destination="BkW-ZF-OUQ" id="qHL-OB-i1w"/>
-                        <outlet property="imageView" destination="NuH-l3-b0j" id="ZAE-6b-Hem"/>
-                        <outlet property="textView" destination="KEQ-q5-tTX" id="exa-9N-3Q3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f9S-sG-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="bhH-I8-CyL">
-                    <connections>
-                        <action selector="imageTapped:" destination="UHT-aJ-yKb" id="fRm-ru-cyO"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="2667" y="-387"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="w9w-db-aEK">
@@ -245,14 +151,8 @@
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

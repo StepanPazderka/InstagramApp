@@ -8,12 +8,14 @@
 import UIKit
 import CoreData
 
-protocol PostSelectionDelegate {
-    
-}
-
 class HomeVC: UIViewController, moveToDetailView {
     @IBOutlet var tableView: UITableView!
+    @IBAction func AddPostButtonPressed(_ sender: Any) {
+        let vc = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
+        vc.modalPresentationStyle = .popover
+        vc.delegate = self
+        self.present(vc, animated: true, completion: nil)
+    }
     @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
         
     }

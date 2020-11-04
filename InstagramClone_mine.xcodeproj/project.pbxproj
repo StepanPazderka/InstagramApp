@@ -15,10 +15,11 @@
 		AA4DA54B2533E6AF00BF435E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4DA54A2533E6AF00BF435E /* Main.storyboard */; };
 		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
-		AA4DA55F253667C900BF435E /* AddPostScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
 		AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */; };
 		AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */; };
+		AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9095F425532DE800377845 /* AddScreenVC.swift */; };
+		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
 		AA9AAB242538B54A0003203C /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB202538B54A0003203C /* Post+CoreDataClass.swift */; };
 		AA9AAB252538B54A0003203C /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB212538B54A0003203C /* Post+CoreDataProperties.swift */; };
 		AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */; };
@@ -37,10 +38,11 @@
 		AA4DA54A2533E6AF00BF435E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostScreenVC.swift; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = InstagramClone_mine/HomeTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeTableViewCell.xib; path = InstagramClone_mine/HomeTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		AA9095F425532DE800377845 /* AddScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenVC.swift; sourceTree = "<group>"; };
+		AA9095F525532DE800377845 /* AddScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddScreenVC.xib; sourceTree = "<group>"; };
 		AA9AAB202538B54A0003203C /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA9AAB212538B54A0003203C /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -83,7 +85,6 @@
 				AA446432253243840091896A /* SceneDelegate.swift */,
 				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
 				AA4DA54E2535163800BF435E /* ProfileVC.swift */,
-				AA4DA55E253667C800BF435E /* AddPostScreenVC.swift */,
 				AA9AAB292538C2BE0003203C /* DetailVC.swift */,
 				AA4DA56225374FE100BF435E /* ImageManager.swift */,
 				AA4DA54A2533E6AF00BF435E /* Main.storyboard */,
@@ -93,6 +94,8 @@
 				AA4DA553253628D400BF435E /* Model.xcdatamodeld */,
 				AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */,
 				AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */,
+				AA9095F425532DE800377845 /* AddScreenVC.swift */,
+				AA9095F525532DE800377845 /* AddScreenVC.xib */,
 			);
 			path = InstagramClone_mine;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				AA4DA54B2533E6AF00BF435E /* Main.storyboard in Resources */,
 				AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */,
+				AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */,
 				AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */,
 				AA44643A253243880091896A /* Assets.xcassets in Resources */,
 			);
@@ -181,6 +185,7 @@
 			files = (
 				AA446431253243840091896A /* AppDelegate.swift in Sources */,
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
+				AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */,
 				AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */,
 				AA9AAB2A2538C2BE0003203C /* DetailVC.swift in Sources */,
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
@@ -189,7 +194,6 @@
 				AA9AAB242538B54A0003203C /* Post+CoreDataClass.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
 				AA446433253243840091896A /* SceneDelegate.swift in Sources */,
-				AA4DA55F253667C900BF435E /* AddPostScreenVC.swift in Sources */,
 				AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */,
 				AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */,
 			);

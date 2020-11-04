@@ -15,9 +15,8 @@ class AddPostScreenVC: UIViewController {
     var id = UUID()
     var fm = FileManager.default
     var delegate: HomeVC?
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var debugLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textView: UITextView?
+    @IBOutlet weak var imageView: UIImageView?
     @IBOutlet weak var AddImageButton: UIButton!
     @IBAction func imageTapped(_ sender: Any) {
         let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
@@ -35,7 +34,7 @@ class AddPostScreenVC: UIViewController {
         print("User tapped image")
     }
     @IBAction func tappedPost(_ sender: Any) {
-        guard (imageView.image != nil) else {
+        guard (imageView!.image != nil) else {
             let alert = UIAlertController(title: "Can't post", message: "You have to pick image", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
@@ -47,9 +46,11 @@ class AddPostScreenVC: UIViewController {
         let post = Post(context: context)
         post.date = Date()
         post.id = id
-        post.label = textView.text
+        post.label = textView?.text
         post.image = id.uuidString // Just stores name of the image
-        sharedImageManager.saveImage(image: imageView.image!, name: self.id.uuidString)
+        if imageView?.image != nil {
+            sharedImageManager.saveImage(image: imageView!.image! , name: self.id.uuidString)
+        }
 
         guard delegate != nil else {
             print("Delegate not found")
@@ -72,9 +73,12 @@ class AddPostScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textView.delegate = self
-        textView.textColor = .darkGray
-        //imageView.image = sharedImageManager.loadImage(image: "MyName.jpg")
+        self.textView?.delegate = self
+        textView?.textColor = .darkGray
+    }
+    
+    override func loadView() {
+        super.loadView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,8 +86,8 @@ class AddPostScreenVC: UIViewController {
         if delegate != nil {
             print("Delegate set to: \(delegate!)")
         }
-        if (imageView.image == nil) {
-            AddImageButton.isHidden = false
+        if (imageView?.image == nil) {
+            //AddImageButton.isHidden = false
         }
     }
 }
@@ -91,7 +95,7 @@ class AddPostScreenVC: UIViewController {
 extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
-            imageView.image = image
+            imageView!.image = image
             AddImageButton.isHidden = true
         } else {
             print("None image selected")
