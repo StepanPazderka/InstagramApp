@@ -46,13 +46,15 @@ class HomeVC: UIViewController, moveToDetailView {
         
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
-        
-        print(ImageManager())
+    }
+    
+    func reloadDataAndViews() {
+        fetchData()
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchData()
-        tableView.reloadData()
+        reloadDataAndViews()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +99,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let imageName: String = self.postsArray[indexPath.row].image!
         cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
+
+        if self.postsArray[indexPath.row].liked == true {
+            cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            cell.likeButton.tintColor = .red
+        } else {
+            cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            cell.likeButton.tintColor = .systemBlue
+        }
+        
         cell.selectionStyle = .none
         return cell
     }

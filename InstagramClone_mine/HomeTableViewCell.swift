@@ -16,20 +16,23 @@ class HomeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentButton: CustomCommentButton!
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var postLabel: UILabel!
     @IBAction func commentButtonClicked(_ sender: UIButton) {
         delegate.MoveToDetailView(id: commentButton.id!, sender: commentButton)
     }
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        sender.tintColor = .red
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

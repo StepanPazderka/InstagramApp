@@ -36,17 +36,27 @@
                                             <action selector="commentButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GdC-1q-xJz"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fvI-7d-pDA">
+                                        <rect key="frame" x="46" y="0.0" width="40" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="O8J-60-eud"/>
+                                        </constraints>
+                                        <state key="normal" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="likeButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Rwz-Dg-dgm"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-Bi-efE">
-                                        <rect key="frame" x="186" y="0.0" width="180" height="50"/>
+                                        <rect key="frame" x="92" y="0.0" width="274" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3QT-Bi-efE" firstAttribute="leading" secondItem="Mm7-VI-rWg" secondAttribute="trailing" id="6KO-bl-VuP"/>
                                     <constraint firstAttribute="height" constant="50" id="Bfg-SU-MU2"/>
                                     <constraint firstAttribute="trailing" secondItem="3QT-Bi-efE" secondAttribute="trailing" id="aKS-gq-zMw"/>
+                                    <constraint firstItem="3QT-Bi-efE" firstAttribute="leading" secondItem="fvI-7d-pDA" secondAttribute="trailing" constant="6" id="zfK-gy-r1j"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -62,6 +72,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentButton" destination="Mm7-VI-rWg" id="9MO-48-xNv"/>
+                <outlet property="likeButton" destination="fvI-7d-pDA" id="CDU-JU-qmr"/>
                 <outlet property="postImage" destination="Pd3-cD-1JF" id="Nfg-gD-KdR"/>
                 <outlet property="postLabel" destination="3QT-Bi-efE" id="eii-D3-bym"/>
             </connections>
@@ -69,6 +80,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="message" catalog="system" width="128" height="113"/>
     </resources>
 </document>

@@ -2,7 +2,7 @@
 //  Post+CoreDataProperties.swift
 //  InstagramClone_mine
 //
-//  Created by Steve on 15/10/2020.
+//  Created by Steve on 04/11/2020.
 //
 //
 
@@ -20,6 +20,7 @@ extension Post {
     @NSManaged public var id: UUID?
     @NSManaged public var image: String?
     @NSManaged public var label: String?
+    @NSManaged public var liked: Bool
     @NSManaged public var comment: NSSet?
 
 }

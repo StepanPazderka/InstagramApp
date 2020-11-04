@@ -18,10 +18,10 @@
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
 		AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */; };
 		AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */; };
+		AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */; };
+		AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */; };
 		AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9095F425532DE800377845 /* AddScreenVC.swift */; };
 		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
-		AA9AAB242538B54A0003203C /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB202538B54A0003203C /* Post+CoreDataClass.swift */; };
-		AA9AAB252538B54A0003203C /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB212538B54A0003203C /* Post+CoreDataProperties.swift */; };
 		AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */; };
 		AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */; };
 		AA9AAB2A2538C2BE0003203C /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB292538C2BE0003203C /* DetailVC.swift */; };
@@ -41,10 +41,10 @@
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = InstagramClone_mine/HomeTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeTableViewCell.xib; path = InstagramClone_mine/HomeTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataClass.swift"; path = "InstagramClone_mine/Model/Post+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Post+CoreDataProperties.swift"; path = "InstagramClone_mine/Model/Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA9095F425532DE800377845 /* AddScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenVC.swift; sourceTree = "<group>"; };
 		AA9095F525532DE800377845 /* AddScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddScreenVC.xib; sourceTree = "<group>"; };
-		AA9AAB202538B54A0003203C /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AA9AAB212538B54A0003203C /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA9AAB292538C2BE0003203C /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -64,6 +64,8 @@
 		AA446424253243840091896A = {
 			isa = PBXGroup;
 			children = (
+				AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */,
+				AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */,
 				AA44642F253243840091896A /* InstagramClone_mine */,
 				AA44642E253243840091896A /* Products */,
 			);
@@ -103,8 +105,6 @@
 		AA4DA55C25363DF200BF435E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA9AAB202538B54A0003203C /* Post+CoreDataClass.swift */,
-				AA9AAB212538B54A0003203C /* Post+CoreDataProperties.swift */,
 				AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */,
 				AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */,
 			);
@@ -184,18 +184,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA446431253243840091896A /* AppDelegate.swift in Sources */,
+				AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */,
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
 				AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */,
 				AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */,
 				AA9AAB2A2538C2BE0003203C /* DetailVC.swift in Sources */,
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
-				AA9AAB252538B54A0003203C /* Post+CoreDataProperties.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
-				AA9AAB242538B54A0003203C /* Post+CoreDataClass.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
 				AA446433253243840091896A /* SceneDelegate.swift in Sources */,
 				AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */,
 				AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */,
+				AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

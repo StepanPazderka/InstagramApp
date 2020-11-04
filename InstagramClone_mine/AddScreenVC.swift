@@ -65,8 +65,7 @@ class AddPostScreenVC: UIViewController {
         }
         
         self.dismiss(animated: true, completion: nil)
-        delegate!.fetchData()
-        delegate!.tableView.reloadData()
+        delegate!.reloadInputViews()
     }
     
     var mainBundlePath = Bundle.main.resourcePath!
