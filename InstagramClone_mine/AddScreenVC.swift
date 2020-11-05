@@ -48,7 +48,7 @@ class AddPostScreenVC: UIViewController {
         post.date = Date()
         post.id = id
         if textView!.text.contains("Please enter text") {
-            post.label = ""
+            post.label = nil
         } else {
             post.label = textView?.text
         }
@@ -66,11 +66,12 @@ class AddPostScreenVC: UIViewController {
             try self.context.save()
             print("Saved Post to Core Data")
         } catch {
-            
         }
         
+        self.delegate!.fetchData()
+        self.delegate!.tableView.reloadData()
+        
         self.dismiss(animated: true, completion: nil)
-        delegate!.reloadInputViews()
     }
     
     var mainBundlePath = Bundle.main.resourcePath!

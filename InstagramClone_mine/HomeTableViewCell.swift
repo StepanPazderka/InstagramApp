@@ -23,10 +23,22 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var commentButton: CustomCommentButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var postLabel: UILabel!
+    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer?
+    
     @IBAction func commentButtonClicked(_ sender: UIButton) {
         delegate.MoveToDetailView(id: commentButton.id!, sender: commentButton)
     }
     @IBAction func likeButtonPressed(_ sender: UIButton) {
+        like()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+//        let tap = tapGestureRecognizer
+//        tap?.addTarget(self, action: #selector(doubleTapped))
+    }
+
+    func like() {
         do {
             let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
             fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
@@ -47,13 +59,12 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    @objc func doubleTapped() {
+//        like()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }
-    
 }

@@ -13,8 +13,9 @@ class HomeVC: UIViewController, moveToDetailView {
     @IBAction func AddPostButtonPressed(_ sender: Any) {
         let vc = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
         vc.modalPresentationStyle = .popover
-        vc.delegate = self
-        self.present(vc, animated: true, completion: nil)
+        self.present(vc, animated: true) {
+            vc.delegate = self
+        }
     }
     @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
         
@@ -44,13 +45,17 @@ class HomeVC: UIViewController, moveToDetailView {
             print(imageName)
         }
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
+        
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
     }
     
     func reloadDataAndViews() {
-        fetchData()
-        tableView.reloadData()
+        self.fetchData()
+        self.tableView.reloadData()
+        print("Reloading data")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,11 +95,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         postsArray.count
     }
     
-    @objc func likeButtonTapped(sender: Any) {
-//        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-//        sender.tintColor = .red
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MARK: Handles creation of new rows in TableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeTableViewCell
@@ -103,7 +103,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         let imageName: String = self.postsArray[indexPath.row].image!
         cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
-
         cell.id = self.postsArray[indexPath.row].id!
         
         if self.postsArray[indexPath.row].liked == true {
