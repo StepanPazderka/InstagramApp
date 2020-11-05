@@ -66,10 +66,10 @@ class AddPostScreenVC: UIViewController {
             try self.context.save()
             print("Saved Post to Core Data")
         } catch {
+            print("Error while saving to Core Data")
         }
-        
-        self.delegate!.fetchData()
-        self.delegate!.tableView.reloadData()
+
+        self.delegate!.reloadDataAndViews()
         
         self.dismiss(animated: true, completion: nil)
     }
