@@ -15,17 +15,15 @@ protocol DetailDelegate {
 class DetailVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var image: UIImageView!
     
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     lazy var context = appDelegate.persisentContainer.viewContext
+    
     var dataArray: [Post] = []
     var id: String = "None"
     weak var HomeVC: HomeVC!
 
-    
-    @IBOutlet weak var image: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
@@ -51,9 +49,6 @@ class DetailVC: UIViewController {
         }
     }
     
-    
-    
-
     /*
     // MARK: - Navigation
 

@@ -33,6 +33,7 @@ class AddPostScreenVC: UIViewController {
         self.present(alertDialog, animated: true, completion: nil)
         print("User tapped image")
     }
+    
     @IBAction func tappedPost(_ sender: Any) {
         guard (imageView!.image != nil) else {
             let alert = UIAlertController(title: "Can't post", message: "You have to pick image", preferredStyle: .alert)
@@ -46,7 +47,11 @@ class AddPostScreenVC: UIViewController {
         let post = Post(context: context)
         post.date = Date()
         post.id = id
-        post.label = textView?.text
+        if textView!.text.contains("Please enter text") {
+            post.label = ""
+        } else {
+            post.label = textView?.text
+        }
         post.image = id.uuidString // Just stores name of the image
         if imageView?.image != nil {
             sharedImageManager.saveImage(image: imageView!.image! , name: self.id.uuidString)

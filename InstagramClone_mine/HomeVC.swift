@@ -83,8 +83,6 @@ class HomeVC: UIViewController, moveToDetailView {
             
         }
     }
-
-    // MARK: - Table view data source
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
@@ -92,7 +90,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         postsArray.count
     }
     
+    @objc func likeButtonTapped(sender: Any) {
+//        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        sender.tintColor = .red
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // MARK: Handles creation of new rows in TableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeTableViewCell
         cell.delegate = self
         cell.postLabel.text = self.postsArray[indexPath.row].label
@@ -100,6 +104,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
 
+        cell.id = self.postsArray[indexPath.row].id!
+        
         if self.postsArray[indexPath.row].liked == true {
             cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             cell.likeButton.tintColor = .red
@@ -111,8 +117,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         return cell
     }
+
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("touched \(indexPath.row)")
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
+                   forRowAt indexPath: IndexPath) {
+        // MARK: Handles editing of rows in TableView
         if editingStyle == .delete {
             guard let imageName: String = postsArray[indexPath.row].image else {
                 return

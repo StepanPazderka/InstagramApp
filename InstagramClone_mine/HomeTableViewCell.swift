@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol moveToDetailView {
     func MoveToDetailView(id: UUID, sender: CustomCommentButton)
@@ -13,6 +14,10 @@ protocol moveToDetailView {
 
 class HomeTableViewCell: UITableViewCell {
     var delegate: HomeVC!
+    var id: UUID!
+    
+    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    lazy var context = appDelegate.persisentContainer.viewContext
     
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentButton: CustomCommentButton!
@@ -22,8 +27,24 @@ class HomeTableViewCell: UITableViewCell {
         delegate.MoveToDetailView(id: commentButton.id!, sender: commentButton)
     }
     @IBAction func likeButtonPressed(_ sender: UIButton) {
-        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        sender.tintColor = .red
+        do {
+            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            
+            var selectedPost: [Post]
+            
+            selectedPost = try context.fetch(fetchRequest)
+            guard selectedPost.first != nil else {
+                return
+            }
+            let editedPost: Post = selectedPost.first!
+            editedPost.liked.toggle()
+            try self.context.save()
+            delegate.reloadDataAndViews()
+        }
+        catch {
+            
+        }
     }
     
     override func awakeFromNib() {
