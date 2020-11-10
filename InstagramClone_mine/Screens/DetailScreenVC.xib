@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailScreenVC" customModule="InstagramClone_mine" customModuleProvider="target">
+            <connections>
+                <outlet property="commentsTableView" destination="uDz-6N-OQG" id="8dS-vI-OmX"/>
+                <outlet property="imageView" destination="g5I-Dy-td4" id="bTB-sE-pFw"/>
+                <outlet property="textView" destination="KBn-cP-SkD" id="WpQ-gV-UPd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-xV-W70">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-zE-yQH">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g5I-Dy-td4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="g5I-Dy-td4" secondAttribute="height" multiplier="1:1" id="sy4-iH-Ppu"/>
+                                    </constraints>
+                                </imageView>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KBn-cP-SkD">
+                                    <rect key="frame" x="0.0" y="414" width="414" height="100"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="100" id="sSK-YA-4Nc"/>
+                                    </constraints>
+                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                    <color key="textColor" systemColor="labelColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-6N-OQG" customClass="SelfSizedTableView" customModule="InstagramClone_mine" customModuleProvider="target">
+                                    <rect key="frame" x="2.5" y="514" width="409" height="270"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="RsY-an-OZ0"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="KBn-cP-SkD" firstAttribute="width" secondItem="ZVP-zE-yQH" secondAttribute="width" id="Wcq-sK-6Zu"/>
+                                <constraint firstItem="KBn-cP-SkD" firstAttribute="top" secondItem="g5I-Dy-td4" secondAttribute="bottom" id="wsA-gl-0I7"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="ZVP-zE-yQH" firstAttribute="leading" secondItem="GaR-TA-yKK" secondAttribute="leading" id="QA4-pw-X8b"/>
+                        <constraint firstItem="ZVP-zE-yQH" firstAttribute="trailing" secondItem="GaR-TA-yKK" secondAttribute="trailing" id="UQm-en-xmG"/>
+                        <constraint firstItem="ZVP-zE-yQH" firstAttribute="bottom" secondItem="GaR-TA-yKK" secondAttribute="bottom" id="kNq-CL-6CN"/>
+                        <constraint firstItem="ZVP-zE-yQH" firstAttribute="width" secondItem="l1E-6g-oKq" secondAttribute="width" id="rR0-ks-5bB"/>
+                        <constraint firstItem="ZVP-zE-yQH" firstAttribute="top" secondItem="GaR-TA-yKK" secondAttribute="top" id="tuu-xk-Y0D"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="GaR-TA-yKK"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="l1E-6g-oKq"/>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="qvv-xV-W70" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Lg-z1-wfQ"/>
+                <constraint firstItem="qvv-xV-W70" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ENQ-9X-3BJ"/>
+                <constraint firstAttribute="bottom" secondItem="qvv-xV-W70" secondAttribute="bottom" id="N9E-bH-aKT"/>
+                <constraint firstItem="qvv-xV-W70" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NkZ-8Q-m3T"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="128.57142857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

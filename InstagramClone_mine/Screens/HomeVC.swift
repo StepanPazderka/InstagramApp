@@ -9,6 +9,10 @@ import UIKit
 import CoreData
 
 class HomeVC: UIViewController, moveToDetailView {
+    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    lazy var context = appDelegate.persisentContainer.viewContext
+    public var selectedID: String = "None"
+    
     @IBOutlet var tableView: UITableView!
     @IBAction func AddPostButtonPressed(_ sender: Any) {
         let vc = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
@@ -22,16 +26,14 @@ class HomeVC: UIViewController, moveToDetailView {
     }
     
     func MoveToDetailView(id: UUID, sender: CustomCommentButton) {
-        performSegue(withIdentifier: "showDetail", sender: sender)
         self.selectedID = sender.id!.uuidString
-        print("Selected ID: \(sender.id!)")
+        
+        let VC1 = DetailScreenVC()
+        VC1.delegate = self
+        self.navigationController!.pushViewController(VC1, animated: true)
     }
     
     var postsArray: [Post] = [] // Holds array of Post objects from DB
-    
-    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    lazy var context = appDelegate.persisentContainer.viewContext
-    var selectedID: String = "None"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,9 +46,6 @@ class HomeVC: UIViewController, moveToDetailView {
         for imageName in sharedImageManager.listSavedImages() {
             print(imageName)
         }
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 300
         
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
@@ -61,31 +60,12 @@ class HomeVC: UIViewController, moveToDetailView {
     override func viewDidAppear(_ animated: Bool) {
         reloadDataAndViews()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            let vc = segue.destination as! DetailVC
-            vc.HomeVC = self
-        }
-        if segue.identifier == "addItemSegue" {
-            let vc = segue.destination as! AddPostScreenVC
-            vc.delegate = self
-        }
-    }
 
     func fetchData() {
-        do {
-            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-            
-            self.postsArray = try context.fetch(fetchRequest)
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        catch {
-            
+        postsArray = DatabaseManager().loadAllPosts()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }

@@ -34,8 +34,6 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let tap = tapGestureRecognizer
-//        tap?.addTarget(self, action: #selector(doubleTapped))
     }
 
     func like() {
@@ -59,12 +57,7 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    @objc func doubleTapped() {
-//        like()
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
 }
