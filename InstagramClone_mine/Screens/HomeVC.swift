@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+
 class HomeVC: UIViewController, moveToDetailView {
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     lazy var context = appDelegate.persisentContainer.viewContext
@@ -85,6 +86,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.commentButton.id = self.postsArray[indexPath.row].id!
         cell.id = self.postsArray[indexPath.row].id!
         
+        cell.imageFileURL = URL(fileURLWithPath: ImageManager().retrieveFullImagePath(imageName: imageName))
+        
         if self.postsArray[indexPath.row].liked == true {
             cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             cell.likeButton.tintColor = .red
@@ -124,6 +127,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
 
 class CustomCommentButton: UIButton {
     var id: UUID?
