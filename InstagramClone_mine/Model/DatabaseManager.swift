@@ -30,6 +30,22 @@ class DatabaseManager: UIView {
         return postsArray
     }
     
+    func loadPostsWithPredicate(predicate: NSPredicate) -> [Post] {
+        var postsArray: [Post] = []
+        
+        do {
+            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            fetchRequest.predicate = predicate
+            postsArray = try context.fetch(fetchRequest)
+        }
+        catch {
+            
+        }
+        
+        return postsArray
+    }
+    
     func loadPost(id: UUID) -> Post {
         var loadedPost: Post
         

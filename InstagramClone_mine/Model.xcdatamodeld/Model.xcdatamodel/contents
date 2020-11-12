@@ -12,10 +12,11 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="label" optional="YES" attributeType="String"/>
         <attribute name="liked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="saved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="comment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="parentPost" inverseEntity="Comment"/>
     </entity>
     <elements>
         <element name="Comment" positionX="-63" positionY="9" width="128" height="103"/>
-        <element name="Post" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Post" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

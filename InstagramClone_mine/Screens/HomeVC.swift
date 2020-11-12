@@ -93,7 +93,14 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             cell.likeButton.tintColor = .systemBlue
         }
         
+        if self.postsArray[indexPath.row].saved == true {
+            cell.bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        } else {
+            cell.bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
+        
         cell.selectionStyle = .none
+        
         return cell
     }
 
@@ -102,8 +109,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         print("touched \(indexPath.row)")
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
-                   forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // MARK: Handles editing of rows in TableView
         if editingStyle == .delete {
             guard let imageName: String = postsArray[indexPath.row].image else {

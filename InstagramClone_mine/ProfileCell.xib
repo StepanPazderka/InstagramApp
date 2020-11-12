@@ -29,6 +29,9 @@
                 <constraint firstAttribute="bottom" secondItem="85H-5u-Vv1" secondAttribute="bottom" id="rmg-Lm-V5d"/>
             </constraints>
             <size key="customSize" width="332" height="247"/>
+            <connections>
+                <outlet property="image" destination="85H-5u-Vv1" id="T7R-m9-ipy"/>
+            </connections>
             <point key="canvasLocation" x="343.47826086956525" y="194.53125"/>
         </collectionViewCell>
     </objects>

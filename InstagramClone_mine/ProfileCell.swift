@@ -8,7 +8,8 @@
 import UIKit
 
 class ProfileCell: UICollectionViewCell {
-
+    @IBOutlet weak var image: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

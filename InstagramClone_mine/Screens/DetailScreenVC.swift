@@ -27,6 +27,9 @@ class DetailScreenVC: UIViewController {
         textView.text = LoadedPost.label
         let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle.main)
         commentsTableView.register(nib, forCellReuseIdentifier: "CommentCell")
+        commentsTableView.maxHeight = 372
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
     }
 
     init() {
@@ -38,7 +41,7 @@ class DetailScreenVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        textView.sizeToFit()
     }
 }
 
@@ -48,10 +51,8 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         cell.commentContent.text = "Ahoj"
         return cell
     }
-    
-    
 }

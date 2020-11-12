@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="commentsTableView" destination="uDz-6N-OQG" id="8dS-vI-OmX"/>
                 <outlet property="imageView" destination="g5I-Dy-td4" id="bTB-sE-pFw"/>
-                <outlet property="textView" destination="KBn-cP-SkD" id="WpQ-gV-UPd"/>
+                <outlet property="textView" destination="KBn-cP-SkD" id="ZiF-4h-FbY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +33,7 @@
                                         <constraint firstAttribute="width" secondItem="g5I-Dy-td4" secondAttribute="height" multiplier="1:1" id="sy4-iH-Ppu"/>
                                     </constraints>
                                 </imageView>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KBn-cP-SkD">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBn-cP-SkD">
                                     <rect key="frame" x="0.0" y="414" width="414" height="100"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -44,11 +44,11 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-6N-OQG" customClass="SelfSizedTableView" customModule="InstagramClone_mine" customModuleProvider="target">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="409" placeholderIntrinsicHeight="270" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-6N-OQG" customClass="SelfSizedTableView" customModule="InstagramClone_mine" customModuleProvider="target">
                                     <rect key="frame" x="2.5" y="514" width="409" height="270"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <connections>
-                                        <outlet property="delegate" destination="-1" id="RsY-an-OZ0"/>
+                                        <outlet property="delegate" destination="-1" id="REP-kh-nDg"/>
                                     </connections>
                                 </tableView>
                             </subviews>

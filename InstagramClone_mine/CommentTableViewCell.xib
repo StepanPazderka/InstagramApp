@@ -4,32 +4,67 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="KGk-i7-Jjw" customClass="CommentTableViewCell" customModule="InstagramClone_mine" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="50" id="KGk-i7-Jjw" customClass="CommentTableViewCell" customModule="InstagramClone_mine" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5sp-Ie-jrp">
-                        <rect key="frame" x="256" y="12" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMO-U7-yYW">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="3gm-oJ-yTn">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0hL-f1-zuU"/>
+                                    <constraint firstAttribute="width" constant="50" id="5Bc-AK-Zrq"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LMn-17-M4s">
+                                <rect key="frame" x="50" y="0.0" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="LMn-17-M4s" firstAttribute="leading" secondItem="3gm-oJ-yTn" secondAttribute="trailing" id="BJp-r4-F5R"/>
+                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="top" secondItem="UMO-U7-yYW" secondAttribute="top" id="NY7-hW-bOv"/>
+                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="leading" secondItem="UMO-U7-yYW" secondAttribute="leading" id="hj3-mh-Hf9"/>
+                            <constraint firstAttribute="trailing" secondItem="LMn-17-M4s" secondAttribute="trailing" id="oUD-VZ-ciA"/>
+                            <constraint firstItem="LMn-17-M4s" firstAttribute="top" secondItem="UMO-U7-yYW" secondAttribute="top" id="zcf-kB-6sn"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="UMO-U7-yYW" secondAttribute="trailing" id="5go-Xf-zIB"/>
+                    <constraint firstItem="UMO-U7-yYW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bXQ-kZ-h9e"/>
+                    <constraint firstItem="UMO-U7-yYW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oFL-2R-QC1"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="commentContent" destination="5sp-Ie-jrp" id="glL-cD-eN7"/>
+                <outlet property="commentContent" destination="LMn-17-M4s" id="jUQ-Qy-cPy"/>
             </connections>
-            <point key="canvasLocation" x="-65" y="127"/>
+            <point key="canvasLocation" x="-751.44927536231887" y="257.8125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mona" width="800" height="1210"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

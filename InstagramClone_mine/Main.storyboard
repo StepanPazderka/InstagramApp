@@ -22,26 +22,26 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="vcX-Tc-elZ">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="1.1920928955078125e-07"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vcX-Tc-elZ" id="O1B-DT-i7k">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Gck-8i-A0L">
-                                        <rect key="frame" x="0.0" y="28.00000011920929" width="414" height="1.1920928955078125e-07"/>
+                                        <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gck-8i-A0L" id="PfL-sS-CeQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="RQV-lX-nYr">
-                                        <rect key="frame" x="0.0" y="28.000000238418579" width="414" height="1.1920928955078125e-07"/>
+                                        <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RQV-lX-nYr" id="nf7-Ie-Dz0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="1.1920928955078125e-07"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="909" y="-154"/>
         </scene>
-        <!--Profile-->
+        <!--Saved-->
         <scene sceneID="NlQ-tH-crx">
             <objects>
                 <viewController id="JHr-dT-mgW" customClass="ProfileVC" customModule="InstagramClone_mine" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,9 +101,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H6B-lS-lWC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uUJ-Tl-wEt">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uUJ-Tl-wEt">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -124,13 +124,13 @@
                         <viewLayoutGuide key="safeArea" id="zNI-4Q-MIj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="zNI-4Q-MIj" firstAttribute="top" secondItem="H6B-lS-lWC" secondAttribute="top" constant="44" id="2cT-Ak-LTN"/>
-                            <constraint firstItem="zNI-4Q-MIj" firstAttribute="bottom" secondItem="H6B-lS-lWC" secondAttribute="bottom" id="6HH-Hu-Gsn"/>
-                            <constraint firstItem="zNI-4Q-MIj" firstAttribute="trailing" secondItem="H6B-lS-lWC" secondAttribute="trailing" id="XM6-uo-6EN"/>
-                            <constraint firstItem="H6B-lS-lWC" firstAttribute="leading" secondItem="zNI-4Q-MIj" secondAttribute="leading" id="n7X-xR-0ol"/>
+                            <constraint firstItem="H6B-lS-lWC" firstAttribute="top" secondItem="TKa-zV-R0h" secondAttribute="top" id="4Iu-MF-Hkl"/>
+                            <constraint firstAttribute="bottom" secondItem="H6B-lS-lWC" secondAttribute="bottom" id="HDw-t9-AEU"/>
+                            <constraint firstItem="H6B-lS-lWC" firstAttribute="leading" secondItem="zNI-4Q-MIj" secondAttribute="leading" id="oDG-3C-0I6"/>
+                            <constraint firstItem="H6B-lS-lWC" firstAttribute="trailing" secondItem="zNI-4Q-MIj" secondAttribute="trailing" id="sGh-rD-wkq"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="0pY-Oq-pWq"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="bookmark" catalog="system" id="0pY-Oq-pWq"/>
                     <connections>
                         <outlet property="collectionView" destination="H6B-lS-lWC" id="YQD-fJ-FN1"/>
                     </connections>
@@ -147,8 +147,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cKF-M8-bYl">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" systemColor="labelColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="FBA-yF-p7d" kind="relationship" relationship="viewControllers" id="Kwq-rJ-7JC"/>
@@ -161,12 +159,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
-        <image name="person" catalog="system" width="128" height="117"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

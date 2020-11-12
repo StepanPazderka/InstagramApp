@@ -20,6 +20,7 @@ extension Post {
     @NSManaged public var image: String?
     @NSManaged public var label: String?
     @NSManaged public var liked: Bool
+    @NSManaged public var saved: Bool
     @NSManaged public var comment: NSSet?
 
 }
