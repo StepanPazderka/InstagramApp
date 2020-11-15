@@ -12,12 +12,11 @@
 		AA00D63D2559F843005B97D1 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA00D63B2559F843005B97D1 /* CommentTableViewCell.xib */; };
 		AA20515F2556151A009AF1E6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA20515D2556151A009AF1E6 /* ProfileCell.swift */; };
 		AA2051602556151A009AF1E6 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA20515E2556151A009AF1E6 /* ProfileCell.xib */; };
+		AA2427AF255DEF4400441459 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2427AE255DEF4400441459 /* Protocols.swift */; };
 		AA446431253243840091896A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446430253243840091896A /* AppDelegate.swift */; };
-		AA446433253243840091896A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446432253243840091896A /* SceneDelegate.swift */; };
 		AA44643A253243880091896A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA446439253243880091896A /* Assets.xcassets */; };
 		AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44643B253243880091896A /* LaunchScreen.storyboard */; };
 		AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA5402533BC3C00BF435E /* HomeVC.swift */; };
-		AA4DA54B2533E6AF00BF435E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA4DA54A2533E6AF00BF435E /* Main.storyboard */; };
 		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
@@ -30,6 +29,9 @@
 		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
 		AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */; };
 		AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */; };
+		AAB074A625606D67005509B1 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074A525606D67005509B1 /* HomeVC.xib */; };
+		AAB074AC2560B6C4005509B1 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB074AB2560B6C4005509B1 /* MainTabBar.swift */; };
+		AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074AE2560C880005509B1 /* ProfileVC.xib */; };
 		AAE45480255457A600041BF0 /* DetailScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE4547E255457A600041BF0 /* DetailScreenVC.swift */; };
 		AAE45481255457A600041BF0 /* DetailScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE4547F255457A600041BF0 /* DetailScreenVC.xib */; };
 /* End PBXBuildFile section */
@@ -40,14 +42,13 @@
 		AA00D63B2559F843005B97D1 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		AA20515D2556151A009AF1E6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		AA20515E2556151A009AF1E6 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
+		AA2427AE255DEF4400441459 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		AA44642D253243840091896A /* InstagramClone_mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramClone_mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA446430253243840091896A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA446432253243840091896A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AA446439253243880091896A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA44643C253243880091896A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA44643E253243880091896A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA4DA5402533BC3C00BF435E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		AA4DA54A2533E6AF00BF435E /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -60,6 +61,9 @@
 		AA9095F525532DE800377845 /* AddScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddScreenVC.xib; sourceTree = "<group>"; };
 		AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AAB074A525606D67005509B1 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		AAB074AB2560B6C4005509B1 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
+		AAB074AE2560C880005509B1 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		AAE4547E255457A600041BF0 /* DetailScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenVC.swift; sourceTree = "<group>"; };
 		AAE4547F255457A600041BF0 /* DetailScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailScreenVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,10 +113,9 @@
 				AA446439253243880091896A /* Assets.xcassets */,
 				AA4DA553253628D400BF435E /* Model.xcdatamodeld */,
 				AA446430253243840091896A /* AppDelegate.swift */,
-				AA446432253243840091896A /* SceneDelegate.swift */,
-				AA4DA54A2533E6AF00BF435E /* Main.storyboard */,
 				AA44643B253243880091896A /* LaunchScreen.storyboard */,
 				AA44643E253243880091896A /* Info.plist */,
+				AA2427AE255DEF4400441459 /* Protocols.swift */,
 			);
 			path = InstagramClone_mine;
 			sourceTree = "<group>";
@@ -138,7 +141,10 @@
 				AAE4547E255457A600041BF0 /* DetailScreenVC.swift */,
 				AAE4547F255457A600041BF0 /* DetailScreenVC.xib */,
 				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
+				AAB074A525606D67005509B1 /* HomeVC.xib */,
 				AA4DA54E2535163800BF435E /* ProfileVC.swift */,
+				AAB074AE2560C880005509B1 /* ProfileVC.xib */,
+				AAB074AB2560B6C4005509B1 /* MainTabBar.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -213,10 +219,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4DA54B2533E6AF00BF435E /* Main.storyboard in Resources */,
 				AAE45481255457A600041BF0 /* DetailScreenVC.xib in Resources */,
 				AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */,
 				AA2051602556151A009AF1E6 /* ProfileCell.xib in Resources */,
+				AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */,
+				AAB074A625606D67005509B1 /* HomeVC.xib in Resources */,
 				AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */,
 				AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */,
 				AA44643A253243880091896A /* Assets.xcassets in Resources */,
@@ -231,9 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAB074AC2560B6C4005509B1 /* MainTabBar.swift in Sources */,
 				AAE45480255457A600041BF0 /* DetailScreenVC.swift in Sources */,
 				AA446431253243840091896A /* AppDelegate.swift in Sources */,
 				AA7D5A3B2557614B00473556 /* DatabaseManager.swift in Sources */,
+				AA2427AF255DEF4400441459 /* Protocols.swift in Sources */,
 				AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */,
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
 				AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */,
@@ -243,7 +252,6 @@
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
-				AA446433253243840091896A /* SceneDelegate.swift in Sources */,
 				AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */,
 				AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */,
 				AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */,

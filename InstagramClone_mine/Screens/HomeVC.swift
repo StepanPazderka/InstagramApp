@@ -9,7 +9,14 @@ import UIKit
 import CoreData
 
 
-class HomeVC: UIViewController, moveToDetailView {
+class HomeVC: UIViewController, showsDetailView {
+    func MoveToDetailView(id: UUID) {
+        let VC1 = DetailScreenVC()
+        VC1.selectedID = id
+        VC1.delegate = self
+        self.navigationController!.pushViewController(VC1, animated: true)
+    }
+    
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     lazy var context = appDelegate.persisentContainer.viewContext
     public var selectedID: String = "None"
@@ -25,27 +32,18 @@ class HomeVC: UIViewController, moveToDetailView {
     @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
         
     }
-    
-    func MoveToDetailView(id: UUID, sender: CustomCommentButton) {
-        self.selectedID = sender.id!.uuidString
-        
-        let VC1 = DetailScreenVC()
-        VC1.delegate = self
-        self.navigationController!.pushViewController(VC1, animated: true)
-    }
-    
+
     var postsArray: [Post] = [] // Holds array of Post objects from DB
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         fetchData()
         
         for imageName in sharedImageManager.listSavedImages() {
-            print(imageName)
+            print("Saved image in DB: \(imageName)")
         }
         
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)

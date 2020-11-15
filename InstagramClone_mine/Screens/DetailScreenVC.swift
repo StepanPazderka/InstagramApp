@@ -13,15 +13,16 @@ protocol DetailDelegate {
 }
 
 class DetailScreenVC: UIViewController {
-    weak var delegate: HomeVC!
+    var delegate: showsDetailView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
+    var selectedID: UUID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let LoadedPost: Post = DatabaseManager().loadPost(id: UUID(uuidString: delegate.selectedID)!)
+        let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
         
         imageView.image = ImageManager().loadImage(image: LoadedPost.image!)
         textView.text = LoadedPost.label

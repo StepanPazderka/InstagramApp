@@ -56,7 +56,7 @@ class HomeTableViewCell: UITableViewCell {
     
     
     @IBAction func commentButtonClicked(_ sender: UIButton) {
-        delegate.MoveToDetailView(id: commentButton.id!, sender: commentButton)
+        delegate.MoveToDetailView(id: commentButton.id!)
     }
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         like()
