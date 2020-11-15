@@ -63,19 +63,20 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     @objc func textViewTapped(sender: UITapGestureRecognizer? = nil) {
+        postLabel.numberOfLines = 0
+        delegate.reloadDataAndViews()
+        awakeFromNib()
         print("Text label tapped")
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        postLabel.numberOfLines = 0
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.textViewTapped(sender:)))
         tap.numberOfTouchesRequired = 1
         postLabel!.isUserInteractionEnabled = true
         postLabel!.addGestureRecognizer(tap)
         postLabel.lineBreakMode = .byTruncatingTail
-        
-//
+
 //        postLabel.sizeToFit()
 //        postLabel.numberOfLines = 0
     }
