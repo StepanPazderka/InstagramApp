@@ -17,7 +17,16 @@ class DetailScreenVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
+    @IBOutlet weak var newCommentTextView: UITextView!
+    
+    @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
+        DatabaseManager().postComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
+        loadComments()
+        self.commentsTableView.reloadData()
+    }
     var selectedID: UUID?
+    var parentPost: Post?
+    var commentsArray: [Comment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +40,18 @@ class DetailScreenVC: UIViewController {
         commentsTableView.maxHeight = 372
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
+        
+        parentPost = DatabaseManager().loadPost(id: selectedID!)
+        loadComments()
+        self.commentsTableView.reloadData()
     }
 
+    func loadComments() {
+        commentsArray = DatabaseManager().loadCommentsWithPredicate(predicate: NSPredicate(format: "parentPost == %@", parentPost!))
+        print("Comments loaded: \(commentsArray)")
+        print("Comments array now contains: \(commentsArray)")
+    }
+    
     init() {
         super.init(nibName: "DetailScreenVC", bundle: nil)
     }
@@ -48,12 +67,12 @@ class DetailScreenVC: UIViewController {
 
 extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        commentsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
-        cell.commentContent.text = "Ahoj"
+        cell.commentContent.text = self.commentsArray[indexPath.row].text
         return cell
     }
 }

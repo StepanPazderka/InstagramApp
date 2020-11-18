@@ -46,6 +46,22 @@ class DatabaseManager: UIView {
         return postsArray
     }
     
+    func loadCommentsWithPredicate(predicate: NSPredicate) -> [Comment] {
+        var postsArray: [Comment] = []
+        
+        do {
+            let fetchRequest = NSFetchRequest<Comment>(entityName: "Comment")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            fetchRequest.predicate = predicate
+            postsArray = try context.fetch(fetchRequest)
+        }
+        catch {
+            
+        }
+        
+        return postsArray
+    }
+    
     func loadPost(id: UUID) -> Post {
         var loadedPost: Post
         
@@ -55,5 +71,19 @@ class DatabaseManager: UIView {
         loadedPost = try! context.fetch(fetchRequest).first!
         
         return loadedPost
+    }
+    
+    func postComment(parentPost: Post, commentContent: String) {
+        let newComment = Comment(context: context)
+        newComment.date = Date()
+        newComment.parentPost = parentPost
+        newComment.text = commentContent
+        
+        do {
+            try self.context.save()
+            print("Saved Comment to Core Data")
+        } catch {
+            print("Error while saving to Core Data")
+        }
     }
 }

@@ -39,7 +39,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tabBar.backgroundColor = .blue
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
