@@ -78,12 +78,12 @@ class ProfileVC: UIViewController, showsDetailView {
         let likedPosts = DatabaseManager().loadPostsWithPredicate(predicate: NSPredicate(format: "liked == true"))
         likedPostsCount.text = ("\(likedPosts.count)")
         
-        let profileImagePath = ImageManager().retrieveFullImagePath(imageName: "profile.jpg")
-        let fileManager = FileManager.default
-        
-        if fileManager.fileExists(atPath: profileImagePath) {
-            profileImageView.image = ImageManager().loadImage(image: "profile.jpg")
+        do {
+            try profileImageView.image = ImageManager().loadImage(image: "profile")
+        } catch {
+            print(error.localizedDescription)
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,12 +101,17 @@ extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
         print("Cell being created")
         let image = self.postsArray[indexPath.row].image!
-        let resultedImage = ImageManager().loadImage(image: image)
-        cell.image.image = resultedImage
+        
+        do {
+            try cell.image.image = ImageManager().loadImage(image: image)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        print("Asking for file \(image)")
         cell.id = self.postsArray[indexPath.row].id
         cell.delegate = self
         cell.image.contentMode = .scaleAspectFill
-        print(resultedImage)
         return cell
     }
 }
@@ -130,7 +135,7 @@ extension ProfileVC: UICollectionViewDelegateFlowLayout {
 extension ProfileVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
-            ImageManager().saveImage(image: image, name: "profile.jpg")
+            ImageManager().saveImage(image: image, name: "profile")
             profileImageView!.image = image
         } else {
             print("None image selected")

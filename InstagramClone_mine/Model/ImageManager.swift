@@ -11,6 +11,11 @@ import UIKit
 let sharedImageManager = ImageManager()
 
 class ImageManager {
+    
+    enum Error: LocalizedError {
+        case FileDoesntExists
+    }
+    
     public var galleryPath: URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -32,11 +37,18 @@ class ImageManager {
         }
     }
     
-    func loadImage(image: String) -> UIImage {
+    func loadImage(image: String) throws -> UIImage  {
         let loadedImage: UIImage!
         print("Trying to load image from: \(retrieveFullImagePath(imageName: image))")
-        loadedImage = UIImage(contentsOfFile: retrieveFullImagePath(imageName: image))
-        return loadedImage
+        
+        let profileImagePath = ImageManager().retrieveFullImagePath(imageName: image)
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: profileImagePath) {
+            loadedImage = UIImage(contentsOfFile: retrieveFullImagePath(imageName: image))
+            return loadedImage
+        } else {
+            throw Error.FileDoesntExists
+        }
     }
     
     func deleteImage(name: String) {

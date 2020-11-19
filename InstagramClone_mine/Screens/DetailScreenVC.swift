@@ -33,7 +33,11 @@ class DetailScreenVC: UIViewController {
         
         let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
         
-        imageView.image = ImageManager().loadImage(image: LoadedPost.image!)
+        do {
+            imageView.image = try ImageManager().loadImage(image: LoadedPost.image!)
+        } catch {
+            print(error.localizedDescription)
+        }
         textView.text = LoadedPost.label
         let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle.main)
         commentsTableView.register(nib, forCellReuseIdentifier: "CommentCell")
