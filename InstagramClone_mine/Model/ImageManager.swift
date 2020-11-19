@@ -17,7 +17,7 @@ class ImageManager {
     }
     
     func retrieveFullImagePath(imageName: String) -> String {
-        return sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path
+        sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path
     }
     
     func saveImage(image: UIImage, name: String) {

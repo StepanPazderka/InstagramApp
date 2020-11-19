@@ -34,6 +34,28 @@ class ProfileVC: UIViewController, showsDetailView {
         profileImageView.layer.cornerRadius = profileImageView.frame.size.height / 2;
         profileImageView.layer.masksToBounds = true;
         profileImageView.layer.borderWidth = 0;
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.ProfilePictureTapped(_:)))
+        profileImageView.isUserInteractionEnabled = true
+        profileImageView.addGestureRecognizer(tapRecognizer)
+        
+        showData()
+    }
+    
+    @objc func ProfilePictureTapped(_ sender: UITapGestureRecognizer? = nil) {
+        let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
+        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { action in
+            let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.delegate = self
+                self.present(picker, animated: true)
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertDialog.addAction(cancelButton)
+        alertDialog.addAction(galleryButton)
+        self.present(alertDialog, animated: true, completion: nil)
+        print("User tapped image")
     }
     
     func MoveToDetailView(id: UUID) {
@@ -43,8 +65,7 @@ class ProfileVC: UIViewController, showsDetailView {
         self.navigationController!.pushViewController(VC1, animated: true)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+    fileprivate func showData() {
         postsArray = DatabaseManager().loadPostsWithPredicate(predicate: NSPredicate(format: "saved == true"))
         collectionView.reloadData()
         
@@ -56,6 +77,18 @@ class ProfileVC: UIViewController, showsDetailView {
         
         let likedPosts = DatabaseManager().loadPostsWithPredicate(predicate: NSPredicate(format: "liked == true"))
         likedPostsCount.text = ("\(likedPosts.count)")
+        
+        let profileImagePath = ImageManager().retrieveFullImagePath(imageName: "profile.jpg")
+        let fileManager = FileManager.default
+        
+        if fileManager.fileExists(atPath: profileImagePath) {
+            profileImageView.image = ImageManager().loadImage(image: "profile.jpg")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        showData()
     }
 }
 
@@ -92,4 +125,19 @@ extension ProfileVC: UICollectionViewDelegateFlowLayout {
     }
     
     
+}
+
+extension ProfileVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            ImageManager().saveImage(image: image, name: "profile.jpg")
+            profileImageView!.image = image
+        } else {
+            print("None image selected")
+        }
+        let localURL: NSURL = info[.imageURL] as! NSURL
+        
+        print("Selected Image filename: \(localURL.lastPathComponent!)")
+        dismiss(animated: true, completion: nil)
+    }
 }

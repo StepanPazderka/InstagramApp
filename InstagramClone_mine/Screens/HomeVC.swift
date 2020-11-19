@@ -48,6 +48,8 @@ class HomeVC: UIViewController, showsDetailView {
         
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
+        self.tableView.estimatedRowHeight = 20
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     func reloadDataAndViews() {
@@ -99,7 +101,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
         }
-        
+//        cell.postLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         cell.selectionStyle = .none
         
         return cell

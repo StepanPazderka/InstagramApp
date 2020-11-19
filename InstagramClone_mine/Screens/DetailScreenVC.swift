@@ -47,6 +47,7 @@ class DetailScreenVC: UIViewController {
     }
 
     func loadComments() {
+        
         commentsArray = DatabaseManager().loadCommentsWithPredicate(predicate: NSPredicate(format: "parentPost == %@", parentPost!))
         print("Comments loaded: \(commentsArray)")
         print("Comments array now contains: \(commentsArray)")
