@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class SelfSizedTableView: UITableView {
-    var maxHeight: CGFloat = UIScreen.main.bounds.size.height
     
     override func reloadData() {
         super.reloadData()
@@ -18,9 +17,7 @@ class SelfSizedTableView: UITableView {
     }
     
     override var intrinsicContentSize: CGSize {
-//        setNeedsLayout()
-//        layoutIfNeeded()
-        let height = min(contentSize.height, maxHeight)
+        let height = min(contentSize.height, .infinity)
         return CGSize(width: contentSize.width, height: height)
     }
 }

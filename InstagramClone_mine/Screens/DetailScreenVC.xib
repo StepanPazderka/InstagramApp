@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailScreenVC" customModule="InstagramClone_mine" customModuleProvider="target">
             <connections>
                 <outlet property="commentsTableView" destination="uDz-6N-OQG" id="8dS-vI-OmX"/>
+                <outlet property="descriptionHeight" destination="sSK-YA-4Nc" id="oR9-K4-umx"/>
                 <outlet property="imageView" destination="g5I-Dy-td4" id="bTB-sE-pFw"/>
                 <outlet property="newCommentTextView" destination="5hH-at-cYm" id="1x3-tb-QfT"/>
                 <outlet property="textView" destination="KBn-cP-SkD" id="ZiF-4h-FbY"/>
@@ -45,12 +46,9 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="409" placeholderIntrinsicHeight="270" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-6N-OQG" customClass="SelfSizedTableView" customModule="InstagramClone_mine" customModuleProvider="target">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="409" placeholderIntrinsicHeight="270" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uDz-6N-OQG" customClass="SelfSizedTableView" customModule="InstagramClone_mine" customModuleProvider="target">
                                     <rect key="frame" x="2.5" y="514" width="409" height="270"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="270" id="MxT-dp-dTU"/>
-                                    </constraints>
                                     <connections>
                                         <outlet property="delegate" destination="-1" id="REP-kh-nDg"/>
                                     </connections>
@@ -60,7 +58,7 @@
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your comment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-at-cYm">
                                             <rect key="frame" x="0.0" y="0.0" width="347" height="100"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="BQi-bP-WEK"/>
                                             </constraints>
@@ -88,8 +86,8 @@
                                 </stackView>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="0SR-i0-KgE" firstAttribute="top" secondItem="uDz-6N-OQG" secondAttribute="bottom" id="BCQ-o6-LlT"/>
                                 <constraint firstItem="KBn-cP-SkD" firstAttribute="width" secondItem="ZVP-zE-yQH" secondAttribute="width" id="Wcq-sK-6Zu"/>
-                                <constraint firstItem="KBn-cP-SkD" firstAttribute="top" secondItem="g5I-Dy-td4" secondAttribute="bottom" id="wsA-gl-0I7"/>
                             </constraints>
                         </stackView>
                     </subviews>
@@ -122,6 +120,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

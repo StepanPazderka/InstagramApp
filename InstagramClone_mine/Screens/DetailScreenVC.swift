@@ -18,6 +18,8 @@ class DetailScreenVC: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
     @IBOutlet weak var newCommentTextView: UITextView!
+    @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
+    
     
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         DatabaseManager().postComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
@@ -41,9 +43,17 @@ class DetailScreenVC: UIViewController {
         textView.text = LoadedPost.label
         let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle.main)
         commentsTableView.register(nib, forCellReuseIdentifier: "CommentCell")
-        commentsTableView.maxHeight = 372
         commentsTableView.delegate = self
         commentsTableView.dataSource = self
+        
+        if textView.text.isEmpty {
+            print("Nothing in post description")
+            descriptionHeight.constant = 0
+        } else {
+            let newSize = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: .infinity))
+            textView.frame.size = CGSize(width: max(newSize.width, textView.frame.size.width), height: newSize.height)
+            descriptionHeight.constant = newSize.height
+        }
         
         parentPost = DatabaseManager().loadPost(id: selectedID!)
         loadComments()
