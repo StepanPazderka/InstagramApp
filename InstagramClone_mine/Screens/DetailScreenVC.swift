@@ -48,6 +48,7 @@ class DetailScreenVC: UIViewController {
         parentPost = DatabaseManager().loadPost(id: selectedID!)
         loadComments()
         self.commentsTableView.reloadData()
+        self.commentsTableView.rowHeight = 50
     }
 
     func loadComments() {
@@ -78,6 +79,18 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
         cell.commentContent.text = self.commentsArray[indexPath.row].text
+        cell.userImage.contentMode = .scaleAspectFill
+        
+        cell.userImage.layer.cornerRadius = cell.userImage.frame.size.height / 2;
+        cell.userImage.layer.masksToBounds = true;
+        cell.userImage.layer.borderWidth = 0;
+        
+        do {
+            try cell.userImage.image = ImageManager().loadImage(image: "profile")
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         return cell
     }
 }

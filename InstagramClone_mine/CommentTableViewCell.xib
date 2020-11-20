@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,17 +18,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UMO-U7-yYW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="3gm-oJ-yTn">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mona" translatesAutoresizingMaskIntoConstraints="NO" id="3gm-oJ-yTn">
+                                <rect key="frame" x="5" y="5" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0hL-f1-zuU"/>
-                                    <constraint firstAttribute="width" constant="50" id="5Bc-AK-Zrq"/>
+                                    <constraint firstAttribute="height" constant="40" id="0hL-f1-zuU"/>
+                                    <constraint firstAttribute="width" constant="40" id="5Bc-AK-Zrq"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LMn-17-M4s">
-                                <rect key="frame" x="50" y="0.0" width="343" height="50"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LMn-17-M4s">
+                                <rect key="frame" x="45" y="-5" width="348" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -38,8 +38,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="LMn-17-M4s" firstAttribute="leading" secondItem="3gm-oJ-yTn" secondAttribute="trailing" id="BJp-r4-F5R"/>
-                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="top" secondItem="UMO-U7-yYW" secondAttribute="top" id="NY7-hW-bOv"/>
-                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="leading" secondItem="UMO-U7-yYW" secondAttribute="leading" id="hj3-mh-Hf9"/>
+                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="top" secondItem="UMO-U7-yYW" secondAttribute="top" constant="5" id="NY7-hW-bOv"/>
+                            <constraint firstItem="3gm-oJ-yTn" firstAttribute="leading" secondItem="UMO-U7-yYW" secondAttribute="leading" constant="5" id="hj3-mh-Hf9"/>
                             <constraint firstAttribute="trailing" secondItem="LMn-17-M4s" secondAttribute="trailing" id="oUD-VZ-ciA"/>
                             <constraint firstItem="LMn-17-M4s" firstAttribute="top" secondItem="UMO-U7-yYW" secondAttribute="top" id="zcf-kB-6sn"/>
                         </constraints>
@@ -54,6 +54,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentContent" destination="LMn-17-M4s" id="jUQ-Qy-cPy"/>
+                <outlet property="userImage" destination="3gm-oJ-yTn" id="8v0-4h-c5T"/>
             </connections>
             <point key="canvasLocation" x="-751.44927536231887" y="257.8125"/>
         </tableViewCell>

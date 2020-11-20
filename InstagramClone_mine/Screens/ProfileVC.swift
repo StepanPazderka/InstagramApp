@@ -83,7 +83,6 @@ class ProfileVC: UIViewController, showsDetailView {
         } catch {
             print(error.localizedDescription)
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,8 +127,6 @@ extension ProfileVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 1
     }
-    
-    
 }
 
 extension ProfileVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
