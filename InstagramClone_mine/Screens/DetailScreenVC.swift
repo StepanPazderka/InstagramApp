@@ -26,6 +26,10 @@ class DetailScreenVC: UIViewController {
         loadComments()
         self.commentsTableView.reloadData()
     }
+    
+    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+    lazy var context = appDelegate.persisentContainer.viewContext
+    
     var selectedID: UUID?
     var parentPost: Post?
     var commentsArray: [Comment] = []
@@ -102,5 +106,16 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // MARK: Handles editing of rows in TableView
+        if editingStyle == .delete {
+            context.delete(commentsArray[indexPath.row] as Comment)
+            try? self.context.save()
+            self.commentsArray.remove(at: indexPath.row)
+            self.commentsTableView.deleteRows(at: [indexPath], with: .fade)
+            self.commentsTableView.reloadData()
+        }
     }
 }
