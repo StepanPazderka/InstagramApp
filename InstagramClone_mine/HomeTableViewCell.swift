@@ -76,6 +76,7 @@ class HomeTableViewCell: UITableViewCell {
         postLabel!.isUserInteractionEnabled = true
         postLabel!.addGestureRecognizer(tap)
         postLabel.lineBreakMode = .byTruncatingTail
+        self.textViewHeight.constant = 0
 
 //        postLabel.sizeToFit()
 //        postLabel.numberOfLines = 0

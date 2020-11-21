@@ -22,9 +22,18 @@ class DetailScreenVC: UIViewController {
     
     
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
+        guard (!self.newCommentTextView.text.isEmpty) || (!self.newCommentTextView.text.contains("Type your comment")) else {
+            let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         DatabaseManager().postComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
         loadComments()
         self.commentsTableView.reloadData()
+        
+        
     }
     
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -36,7 +45,9 @@ class DetailScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.newCommentTextView.delegate = self
         
+        self.newCommentTextView.text = "Type your comment"
         let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
         
         do {
@@ -116,6 +127,20 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
             self.commentsArray.remove(at: indexPath.row)
             self.commentsTableView.deleteRows(at: [indexPath], with: .fade)
             self.commentsTableView.reloadData()
+        }
+    }
+}
+
+extension DetailScreenVC: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text.removeAll()
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.textColor = .darkGray
+            textView.text = "Type your comment"
         }
     }
 }
