@@ -13,8 +13,6 @@ class DatabaseManager: UIView {
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
     lazy var context = appDelegate.persisentContainer.viewContext
     
-    
-    
     func loadAllPosts() -> [Post] {
         var postsArray: [Post] = []
         
@@ -73,7 +71,7 @@ class DatabaseManager: UIView {
         return loadedPost
     }
     
-    func postComment(parentPost: Post, commentContent: String) {
+    func addComment(parentPost: Post, commentContent: String) {
         let newComment = Comment(context: context)
         newComment.date = Date()
         newComment.parentPost = parentPost
@@ -82,6 +80,27 @@ class DatabaseManager: UIView {
         do {
             try self.context.save()
             print("Saved Comment to Core Data")
+        } catch {
+            print("Error while saving to Core Data")
+        }
+    }
+    
+    func addPost(id: UUID, label: String, image: UIImage) {
+        let post = Post(context: context)
+        post.date = Date()
+        post.id = id
+        post.image = id.uuidString
+        
+        if label.contains("Please enter text") {
+            post.label = nil
+        } else {
+            post.label = label
+        }
+        
+        do {
+            try self.context.save()
+            print("Saved Post to Core Data")
+            sharedImageManager.saveImage(image: image, name: id.uuidString)
         } catch {
             print("Error while saving to Core Data")
         }

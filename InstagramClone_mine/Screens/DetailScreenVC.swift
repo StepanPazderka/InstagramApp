@@ -29,7 +29,7 @@ class DetailScreenVC: UIViewController {
             return
         }
         
-        DatabaseManager().postComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
+        DatabaseManager().addComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
         loadComments()
         self.commentsTableView.reloadData()
         recalculateCommentsSize()

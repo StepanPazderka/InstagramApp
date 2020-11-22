@@ -44,29 +44,14 @@ class AddPostScreenVC: UIViewController {
             return
         }
         
-        let post = Post(context: context)
-        post.date = Date()
-        post.id = id
-        if textView!.text.contains("Please enter text") {
-            post.label = nil
-        } else {
-            post.label = textView?.text
-        }
-        post.image = id.uuidString // Just stores name of the image
+         // Just stores name of the image
         if imageView?.image != nil {
-            sharedImageManager.saveImage(image: imageView!.image! , name: self.id.uuidString)
+            DatabaseManager().addPost(id: self.id, label: (textView?.text)!, image: imageView!.image!)
         }
 
         guard delegate != nil else {
             print("Delegate not found")
             return
-        }
-        
-        do {
-            try self.context.save()
-            print("Saved Post to Core Data")
-        } catch {
-            print("Error while saving to Core Data")
         }
 
         self.delegate!.reloadDataAndViews()
@@ -85,6 +70,7 @@ class AddPostScreenVC: UIViewController {
         textView!.layer.masksToBounds = true;
         textView!.layer.borderWidth = 0;
         textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView!.textColor = UIColor.label
     }
     
     override func loadView() {
