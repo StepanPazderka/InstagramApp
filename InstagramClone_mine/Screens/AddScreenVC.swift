@@ -36,7 +36,7 @@ class AddPostScreenVC: UIViewController {
     
     @IBAction func tappedPost(_ sender: Any) {
         guard (imageView!.image != nil) else {
-            let alert = UIAlertController(title: "Can't post", message: "You have to pick image", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Can't post", message: "You have to pick an image", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
             }))
