@@ -19,7 +19,7 @@ class DetailScreenVC: UIViewController {
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
     @IBOutlet weak var newCommentTextView: UITextView!
     @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
     
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         guard (!self.newCommentTextView.text.isEmpty) || (!self.newCommentTextView.text.contains("Type your comment")) else {
@@ -32,8 +32,7 @@ class DetailScreenVC: UIViewController {
         DatabaseManager().postComment(parentPost: parentPost!, commentContent: newCommentTextView.text)
         loadComments()
         self.commentsTableView.reloadData()
-        
-        
+        recalculateCommentsSize()
     }
     
     lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
@@ -42,6 +41,10 @@ class DetailScreenVC: UIViewController {
     var selectedID: UUID?
     var parentPost: Post?
     var commentsArray: [Comment] = []
+    
+    func recalculateCommentsSize () {
+        coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height + 17
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +96,7 @@ class DetailScreenVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         textView.sizeToFit()
+        recalculateCommentsSize()
     }
 }
 
@@ -127,6 +131,7 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
             self.commentsArray.remove(at: indexPath.row)
             self.commentsTableView.deleteRows(at: [indexPath], with: .fade)
             self.commentsTableView.reloadData()
+            recalculateCommentsSize()
         }
     }
 }

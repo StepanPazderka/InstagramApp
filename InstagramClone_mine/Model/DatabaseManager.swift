@@ -51,7 +51,7 @@ class DatabaseManager: UIView {
         
         do {
             let fetchRequest = NSFetchRequest<Comment>(entityName: "Comment")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
             fetchRequest.predicate = predicate
             postsArray = try context.fetch(fetchRequest)
         }

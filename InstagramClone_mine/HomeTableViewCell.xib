@@ -22,7 +22,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-cD-1JF">
                                 <rect key="frame" x="0.0" y="0.0" width="367" height="367"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pd3-cD-1JF" secondAttribute="height" multiplier="1:1" id="p9K-xI-EtL"/>
+                                    <constraint firstAttribute="width" secondItem="Pd3-cD-1JF" secondAttribute="height" multiplier="1:1" id="U1a-VK-icQ"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="McD-Yw-dgv">
@@ -83,7 +83,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRW-OD-vhJ">
-                                <rect key="frame" x="10" y="417" width="35.5" height="141"/>
+                                <rect key="frame" x="10" y="417" width="347" height="141"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="vTd-FM-Lm6"/>
                                 </constraints>
@@ -94,10 +94,10 @@
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Pd3-cD-1JF" firstAttribute="top" secondItem="6eO-hS-hGg" secondAttribute="top" id="HiU-b7-Dga"/>
-                            <constraint firstItem="Pd3-cD-1JF" firstAttribute="top" secondItem="6eO-hS-hGg" secondAttribute="top" id="Ia4-bi-JWk"/>
+                            <constraint firstAttribute="trailing" secondItem="Pd3-cD-1JF" secondAttribute="trailing" id="Tu1-p0-jgT"/>
                             <constraint firstAttribute="trailing" secondItem="SRW-OD-vhJ" secondAttribute="trailing" constant="10" id="U9K-S6-mUf"/>
-                            <constraint firstItem="Pd3-cD-1JF" firstAttribute="leading" secondItem="6eO-hS-hGg" secondAttribute="leading" id="sDt-rd-m8X"/>
+                            <constraint firstItem="Pd3-cD-1JF" firstAttribute="top" secondItem="6eO-hS-hGg" secondAttribute="top" id="hht-mq-Mdx"/>
+                            <constraint firstItem="Pd3-cD-1JF" firstAttribute="leading" secondItem="6eO-hS-hGg" secondAttribute="leading" id="k3e-qC-3fH"/>
                             <constraint firstItem="SRW-OD-vhJ" firstAttribute="leading" secondItem="6eO-hS-hGg" secondAttribute="leading" constant="10" id="w1l-vZ-8NE"/>
                         </constraints>
                     </stackView>
