@@ -43,7 +43,7 @@ class DetailScreenVC: UIViewController {
     var commentsArray: [Comment] = []
     
     func recalculateCommentsSize () {
-        coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height + 17
+        coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height + 40
     }
     
     override func viewDidLoad() {
@@ -77,6 +77,11 @@ class DetailScreenVC: UIViewController {
         loadComments()
         self.commentsTableView.reloadData()
         self.commentsTableView.rowHeight = 50
+        
+        newCommentTextView.layer.cornerRadius = 10;
+        newCommentTextView.layer.masksToBounds = true;
+        newCommentTextView.layer.borderWidth = 0;
+        newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     func loadComments() {

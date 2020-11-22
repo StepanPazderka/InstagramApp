@@ -24,7 +24,7 @@ class DatabaseManager: UIView {
             postsArray = try context.fetch(fetchRequest)
         }
         catch {
-            
+            print(error.localizedDescription)
         }
         
         return postsArray

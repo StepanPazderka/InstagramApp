@@ -80,6 +80,11 @@ class AddPostScreenVC: UIViewController {
         super.viewDidLoad()
         self.textView?.delegate = self
         textView?.textColor = .darkGray
+        
+        textView!.layer.cornerRadius = 10;
+        textView!.layer.masksToBounds = true;
+        textView!.layer.borderWidth = 0;
+        textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
     
     override func loadView() {

@@ -48,8 +48,6 @@ class HomeVC: UIViewController, showsDetailView {
         
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
-//        self.tableView.estimatedRowHeight = 0
-//        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     func reloadDataAndViews() {
