@@ -22,7 +22,7 @@ class DetailScreenVC: UIViewController {
     @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
     
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
-        guard (!self.newCommentTextView.text.isEmpty) || (!self.newCommentTextView.text.contains("Type your comment")) else {
+        if (self.newCommentTextView.text.isEmpty) || (self.newCommentTextView.text.contains("Type your comment")) {
             let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -82,6 +82,7 @@ class DetailScreenVC: UIViewController {
         newCommentTextView.layer.masksToBounds = true;
         newCommentTextView.layer.borderWidth = 0;
         newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        newCommentTextView.textColor = .darkGray
     }
 
     func loadComments() {
