@@ -14,11 +14,11 @@ protocol DetailDelegate {
 
 class DetailScreenVC: UIViewController {
     var delegate: showsDetailView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var postScreenImageView: UIImageView!
+    @IBOutlet weak var postScrenDescriptionLabel: UITextView!
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
     @IBOutlet weak var newCommentTextView: UITextView!
-    @IBOutlet weak var descriptionHeight: NSLayoutConstraint!
+    @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
     
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
@@ -35,8 +35,38 @@ class DetailScreenVC: UIViewController {
         recalculateCommentsSize()
     }
     
-    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    lazy var context = appDelegate.persisentContainer.viewContext
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Setting up delegates
+        newCommentTextView.delegate = self
+        commentsTableView.delegate = self
+        commentsTableView.dataSource = self
+        
+        let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
+        
+        do {
+            postScreenImageView.image = try ImageManager().loadImage(image: LoadedPost.image!)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: "CommentCell")
+
+        layoutPostDescription(label: LoadedPost.label)
+        
+        parentPost = DatabaseManager().loadPost(id: selectedID!)
+        loadComments()
+        
+        commentsTableView.reloadData()
+        commentsTableView.rowHeight = 50
+        
+        newCommentTextView.layer.cornerRadius = 10;
+        newCommentTextView.layer.masksToBounds = true;
+        newCommentTextView.layer.borderWidth = 0;
+        newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        newCommentTextView.textColor = .darkGray
+    }
     
     var selectedID: UUID?
     var parentPost: Post?
@@ -46,47 +76,22 @@ class DetailScreenVC: UIViewController {
         coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height + 40
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.newCommentTextView.delegate = self
+    fileprivate func layoutPostDescription(label: String!) {
+        postScrenDescriptionLabel.text = label
         
-        self.newCommentTextView.text = "Type your comment"
-        let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
-        
-        do {
-            imageView.image = try ImageManager().loadImage(image: LoadedPost.image!)
-        } catch {
-            print(error.localizedDescription)
-        }
-        textView.text = LoadedPost.label
-        let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle.main)
-        commentsTableView.register(nib, forCellReuseIdentifier: "CommentCell")
-        commentsTableView.delegate = self
-        commentsTableView.dataSource = self
-        
-        if textView.text.isEmpty {
+        if postScrenDescriptionLabel.text.isEmpty {
             print("Nothing in post description")
-            descriptionHeight.constant = 0
+            descriptionHeightConstraint.constant = 0
         } else {
-            let newSize = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: .infinity))
-            textView.frame.size = CGSize(width: max(newSize.width, textView.frame.size.width), height: newSize.height)
-            descriptionHeight.constant = newSize.height
+            let newSize = postScrenDescriptionLabel.sizeThatFits(CGSize(width: postScrenDescriptionLabel.frame.size.width, height: .infinity))
+            postScrenDescriptionLabel.frame.size = CGSize(width: max(newSize.width, postScrenDescriptionLabel.frame.size.width), height: newSize.height)
+            descriptionHeightConstraint.constant = newSize.height
         }
-        
-        parentPost = DatabaseManager().loadPost(id: selectedID!)
-        loadComments()
-        self.commentsTableView.reloadData()
-        self.commentsTableView.rowHeight = 50
-        
-        newCommentTextView.layer.cornerRadius = 10;
-        newCommentTextView.layer.masksToBounds = true;
-        newCommentTextView.layer.borderWidth = 0;
-        newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        newCommentTextView.textColor = .darkGray
     }
+    
+    
 
     func loadComments() {
-        
         commentsArray = DatabaseManager().loadCommentsWithPredicate(predicate: NSPredicate(format: "parentPost == %@", parentPost!))
         print("Comments loaded: \(commentsArray)")
         print("Comments array now contains: \(commentsArray)")
@@ -101,7 +106,7 @@ class DetailScreenVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        textView.sizeToFit()
+        postScrenDescriptionLabel.sizeToFit()
         recalculateCommentsSize()
     }
 }
@@ -132,8 +137,8 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // MARK: Handles editing of rows in TableView
         if editingStyle == .delete {
-            context.delete(commentsArray[indexPath.row] as Comment)
-            try? self.context.save()
+            let selectedComment = commentsArray[indexPath.row] as Comment
+            DatabaseManager().delete(comment: selectedComment)
             self.commentsArray.remove(at: indexPath.row)
             self.commentsTableView.deleteRows(at: [indexPath], with: .fade)
             self.commentsTableView.reloadData()

@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 
-let sharedImageManager = ImageManager()
-
 class ImageManager {
     
     enum Error: LocalizedError {
@@ -22,7 +20,7 @@ class ImageManager {
     }
     
     func retrieveFullImagePath(imageName: String) -> String {
-        sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path
+        ImageManager().galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path
     }
     
     func saveImage(image: UIImage, name: String) {
@@ -64,10 +62,10 @@ class ImageManager {
     func listSavedImages() -> [String] {
         let fm = FileManager.default
         var fullPathImages: [String] = []
-        let listedImages = try! fm.contentsOfDirectory(atPath: sharedImageManager.galleryPath.path)
+        let listedImages = try! fm.contentsOfDirectory(atPath: ImageManager().galleryPath.path)
         
         for imageName in listedImages {
-            var newPath: URL = URL(fileURLWithPath: sharedImageManager.galleryPath.absoluteString)
+            var newPath: URL = URL(fileURLWithPath: ImageManager().galleryPath.absoluteString)
             newPath = newPath.appendingPathComponent(imageName)
             fullPathImages.append(newPath.absoluteString)
         }

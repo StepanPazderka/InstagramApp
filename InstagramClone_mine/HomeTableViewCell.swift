@@ -14,13 +14,6 @@ protocol moveToDetailView {
 }
 
 class HomeTableViewCell: UITableViewCell {
-    var delegate: HomeVC!
-    var id: UUID!
-    var imageFileURL: URL!
-    
-    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    lazy var context = appDelegate.persisentContainer.viewContext
-    
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentButton: CustomCommentButton!
     @IBOutlet weak var likeButton: UIButton!
@@ -40,34 +33,34 @@ class HomeTableViewCell: UITableViewCell {
         delegate.present(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func commentButtonClicked(_ sender: UIButton) {
+        delegate.moveToDetailView(id: commentButton.id!)
+    }
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        DatabaseManager().likePost(id: id) {
+            self.delegate.reloadDataAndViews()
+        }
+    }
+    
     @IBAction func bookmarkButtonTapped(_ sender: Any) {
-//        postLabel.sizeToFit()
-//        postLabel.numberOfLines = 0
-//        postLabel.preferredMaxLayoutWidth = postLabel.frame.width
-//        let size: CGSize = postLabel.sizeThatFits(CGSize(width: (postLabel.frame.size.width), height: CGFloat.greatestFiniteMagnitude))
-//        textViewHeight.constant = size.height
-//
-//        postLabel.frame.size.height = 300
         postLabel.numberOfLines = 0
         awakeFromNib()
         print("Tapped bookmark button")
-        bookmark()
+        DatabaseManager().bookmarkPost(id: id) {
+            self.delegate.reloadDataAndViews()
+        }
     }
-    
-    
-    @IBAction func commentButtonClicked(_ sender: UIButton) {
-        delegate.MoveToDetailView(id: commentButton.id!)
-    }
-    @IBAction func likeButtonPressed(_ sender: UIButton) {
-        like()
-    }
-    
+
     @objc func textViewTapped(sender: UITapGestureRecognizer? = nil) {
         postLabel.numberOfLines = 0
         delegate.reloadDataAndViews()
         awakeFromNib()
         print("Text label tapped")
     }
+    
+    var delegate: HomeVC!
+    var id: UUID!
+    var imageFileURL: URL!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -77,53 +70,8 @@ class HomeTableViewCell: UITableViewCell {
         postLabel!.addGestureRecognizer(tap)
         postLabel.lineBreakMode = .byTruncatingTail
         self.textViewHeight.constant = 0
-
-//        postLabel.sizeToFit()
-//        postLabel.numberOfLines = 0
     }
 
-    func like() {
-        do {
-            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-            
-            var selectedPost: [Post]
-            
-            selectedPost = try context.fetch(fetchRequest)
-            guard selectedPost.first != nil else {
-                return
-            }
-            let editedPost: Post = selectedPost.first!
-            editedPost.liked.toggle()
-            try self.context.save()
-            delegate.reloadDataAndViews()
-        }
-        catch {
-            
-        }
-    }
-    
-    func bookmark() {
-        do {
-            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-            
-            var selectedPost: [Post]
-            
-            selectedPost = try context.fetch(fetchRequest)
-            guard selectedPost.first != nil else {
-                return
-            }
-            let editedPost: Post = selectedPost.first!
-            editedPost.saved.toggle()
-            try self.context.save()
-            delegate.reloadDataAndViews()
-        }
-        catch {
-            
-        }
-    }
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

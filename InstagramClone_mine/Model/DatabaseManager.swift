@@ -71,6 +71,24 @@ class DatabaseManager: UIView {
         return loadedPost
     }
     
+    func delete(comment: Comment) {
+        context.delete(comment)
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func delete(post: Post) {
+        context.delete(post)
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func addComment(parentPost: Post, commentContent: String) {
         let newComment = Comment(context: context)
         newComment.date = Date()
@@ -82,6 +100,57 @@ class DatabaseManager: UIView {
             print("Saved Comment to Core Data")
         } catch {
             print("Error while saving to Core Data")
+        }
+    }
+    
+    
+    func likePost(id: UUID, completion: (() -> Void)?) {
+        do {
+            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            
+            var selectedPost: [Post]
+            
+            selectedPost = try context.fetch(fetchRequest)
+            guard selectedPost.first != nil else {
+                return
+            }
+            let editedPost: Post = selectedPost.first!
+            editedPost.liked.toggle()
+            try self.context.save()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+
+        if completion != nil {
+            completion!()
+        }
+    }
+    
+    
+    func bookmarkPost(id: UUID, completion: (() -> Void)?) {
+        do {
+            let fetchRequest = NSFetchRequest<Post>(entityName: "Post")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            
+            var selectedPost: [Post]
+            
+            selectedPost = try context.fetch(fetchRequest)
+            guard selectedPost.first != nil else {
+                return
+            }
+            let editedPost: Post = selectedPost.first!
+            editedPost.saved.toggle()
+            try self.context.save()
+            
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+        
+        if completion != nil {
+            completion!()
         }
     }
     
@@ -100,7 +169,7 @@ class DatabaseManager: UIView {
         do {
             try self.context.save()
             print("Saved Post to Core Data")
-            sharedImageManager.saveImage(image: image, name: id.uuidString)
+            ImageManager().saveImage(image: image, name: id.uuidString)
         } catch {
             print("Error while saving to Core Data")
         }

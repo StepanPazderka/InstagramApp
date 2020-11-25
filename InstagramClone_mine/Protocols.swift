@@ -8,5 +8,5 @@
 import Foundation
 
 protocol showsDetailView {
-    func MoveToDetailView(id: UUID)
+    func moveToDetailView(id: UUID)
 }

@@ -22,6 +22,6 @@ class ProfileCell: UICollectionViewCell {
 
     @objc func imageViewTapped(_: Any) {
         print("User tapped image")
-        delegate.MoveToDetailView(id: id!)
+        delegate.moveToDetailView(id: id!)
     }
 }

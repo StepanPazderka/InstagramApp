@@ -12,6 +12,8 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentContent: UITextView!
     @IBOutlet weak var userImage: UIImageView!
     
+    static public let nib = UINib(nibName: "CommentTableViewCell", bundle: Bundle.main)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

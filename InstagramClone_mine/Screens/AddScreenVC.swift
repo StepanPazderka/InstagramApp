@@ -34,6 +34,11 @@ class AddPostScreenVC: UIViewController {
         print("User tapped image")
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func tappedPost(_ sender: Any) {
         guard (imageView!.image != nil) else {
             let alert = UIAlertController(title: "Can't post", message: "You have to pick an image", preferredStyle: .alert)

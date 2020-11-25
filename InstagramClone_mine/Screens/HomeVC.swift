@@ -10,39 +10,19 @@ import CoreData
 
 
 class HomeVC: UIViewController, showsDetailView {
-    func MoveToDetailView(id: UUID) {
-        let VC1 = DetailScreenVC()
-        VC1.selectedID = id
-        VC1.delegate = self
-        self.navigationController!.pushViewController(VC1, animated: true)
-    }
-    
-    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    lazy var context = appDelegate.persisentContainer.viewContext
-    public var selectedID: String = "None"
-    
     @IBOutlet var tableView: UITableView!
-    @IBAction func AddPostButtonPressed(_ sender: Any) {
-        let vc = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
-        vc.modalPresentationStyle = .popover
-        self.present(vc, animated: true) {
-            vc.delegate = self
-        }
-    }
-    @IBAction func commentButtonClicked(_ sender: CustomCommentButton) {
-        
-    }
-
-    var postsArray: [Post] = [] // Holds array of Post objects from DB
     
+    var postsArray: [Post] = [] // Holds array of Post objects from DB
+    public var selectedID: String = "None"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
-        fetchData()
+        reloadDataAndViews()
         
-        for imageName in sharedImageManager.listSavedImages() {
+        for imageName in ImageManager().listSavedImages() {
             print("Saved image in DB: \(imageName)")
         }
         
@@ -50,22 +30,24 @@ class HomeVC: UIViewController, showsDetailView {
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
     }
     
-    func reloadDataAndViews() {
-        self.fetchData()
-        self.tableView.reloadData()
-        print("Reloading data")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        reloadDataAndViews()
+    func moveToDetailView(id: UUID) {
+        let DetailScreen = DetailScreenVC()
+        DetailScreen.selectedID = id
+        DetailScreen.delegate = self
+        self.navigationController!.pushViewController(DetailScreen, animated: true)
     }
 
-    func fetchData() {
+    func reloadDataAndViews() {
         postsArray = DatabaseManager().loadAllPosts()
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+        print("Reloading data")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reloadDataAndViews()
     }
 }
 
@@ -80,7 +62,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.postLabel.text = self.postsArray[indexPath.row].label
         let imageName: String = self.postsArray[indexPath.row].image!
-        cell.postImage.image = UIImage(contentsOfFile: sharedImageManager.galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
+        cell.postImage.image = UIImage(contentsOfFile: ImageManager().galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
         cell.id = self.postsArray[indexPath.row].id!
         
@@ -116,9 +98,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             guard let imageName: String = postsArray[indexPath.row].image else {
                 return
             }
-            sharedImageManager.deleteImage(name: imageName)
-            context.delete(postsArray[indexPath.row] as Post)
-            try? self.context.save()
+            ImageManager().deleteImage(name: imageName)
+            DatabaseManager().delete(post: postsArray[indexPath.row] as Post)
             self.postsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
             self.tableView.reloadData()

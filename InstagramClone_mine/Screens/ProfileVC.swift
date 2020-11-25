@@ -8,13 +8,27 @@
 import UIKit
 
 class ProfileVC: UIViewController, showsDetailView {
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var postsCount: UILabel!
     @IBOutlet weak var likedPostsCount: UILabel!
     @IBOutlet weak var savedPostsCount: UILabel!
+    @objc func ProfilePictureTapped(_ sender: UITapGestureRecognizer? = nil) {
+        let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
+        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { action in
+            let picker = UIImagePickerController()
+                picker.allowsEditing = true
+                picker.delegate = self
+                self.present(picker, animated: true)
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alertDialog.addAction(cancelButton)
+        alertDialog.addAction(galleryButton)
+        self.present(alertDialog, animated: true, completion: nil)
+        print("User tapped image")
+    }
     
     var postsArray: [Post] = []
     var selectedID: UUID!
@@ -41,24 +55,8 @@ class ProfileVC: UIViewController, showsDetailView {
         
         showData()
     }
-    
-    @objc func ProfilePictureTapped(_ sender: UITapGestureRecognizer? = nil) {
-        let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
-        let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { action in
-            let picker = UIImagePickerController()
-                picker.allowsEditing = true
-                picker.delegate = self
-                self.present(picker, animated: true)
-        }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alertDialog.addAction(cancelButton)
-        alertDialog.addAction(galleryButton)
-        self.present(alertDialog, animated: true, completion: nil)
-        print("User tapped image")
-    }
-    
-    func MoveToDetailView(id: UUID) {
+
+    func moveToDetailView(id: UUID) {
         let VC1 = DetailScreenVC()
         VC1.delegate = self
         VC1.selectedID = id
