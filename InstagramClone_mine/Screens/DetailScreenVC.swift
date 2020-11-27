@@ -12,7 +12,12 @@ protocol DetailDelegate {
     func didSelectRow()
 }
 
-class DetailScreenVC: UIViewController {
+class DetailScreenVC: UIViewController, canShareItem {
+    func showShareScreen(activityVC: UIActivityViewController) {
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     var delegate: showsDetailView!
     @IBOutlet weak var postScreenImageView: UIImageView!
     @IBOutlet weak var postScrenDescriptionLabel: UITextView!
@@ -37,7 +42,11 @@ class DetailScreenVC: UIViewController {
     }
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var DetailScreenBottomConstraint: NSLayoutConstraint!
-    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        let imagePath = ImageManager().retrieveFullImagePath(imageName: selectedID!.uuidString)
+        
+        DatabaseManager().shareItem(delegateVC: self, image: postScreenImageView.image!, url: URL(fileURLWithPath: imagePath))
+    }
     
     var selectedID: UUID?
     var parentPost: Post?
@@ -160,7 +169,6 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
 extension DetailScreenVC: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text.removeAll()
-        textView.textColor = .black
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
@@ -168,14 +176,5 @@ extension DetailScreenVC: UITextViewDelegate {
             textView.textColor = .darkGray
             textView.text = "Type your comment"
         }
-    }
-    
-    func keyboardWasShown(notification: NSNotification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.DetailScreenBottomConstraint.constant = keyboardFrame.size.height + 20
-        })
     }
 }

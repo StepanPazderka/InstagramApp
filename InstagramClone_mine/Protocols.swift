@@ -6,7 +6,12 @@
 //
 
 import Foundation
+import LinkPresentation
 
 protocol showsDetailView {
     func moveToDetailView(id: UUID)
+}
+
+protocol canShareItem {
+    func showShareScreen(activityVC: UIActivityViewController)
 }

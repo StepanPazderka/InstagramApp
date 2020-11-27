@@ -190,4 +190,14 @@ class DatabaseManager: UIView {
         addComment(parentPost: DatabaseManager().loadPost(id: thirdPostID), commentContent: "Best movie... ever")
         bookmarkPost(id: thirdPostID, completion: nil)
     }
+    
+    func shareItem(delegateVC: canShareItem, image: UIImage, url: URL) {
+        let imageToShare: UIImage = image
+        
+        let activityViewController = UIActivityViewController(activityItems: [imageToShare, ShareItemDetails(URL: url)], applicationActivities: nil)
+        
+        
+        
+        delegateVC.showShareScreen(activityVC: activityViewController)
+    }
 }

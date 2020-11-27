@@ -23,6 +23,7 @@
 		AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */; };
 		AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */; };
 		AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */; };
+		AA7CE87F2571727C003FB753 /* ShareItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7CE87E2571727C003FB753 /* ShareItem.swift */; };
 		AA7D5A3B2557614B00473556 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D5A3A2557614B00473556 /* DatabaseManager.swift */; };
 		AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9095F425532DE800377845 /* AddScreenVC.swift */; };
 		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
@@ -55,6 +56,7 @@
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AA7CE87E2571727C003FB753 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
 		AA7D5A3A2557614B00473556 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		AA9095F425532DE800377845 /* AddScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScreenVC.swift; sourceTree = "<group>"; };
 		AA9095F525532DE800377845 /* AddScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddScreenVC.xib; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */,
 				AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */,
 				AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */,
+				AA7CE87E2571727C003FB753 /* ShareItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				AA7D5A3B2557614B00473556 /* DatabaseManager.swift in Sources */,
 				AA2427AF255DEF4400441459 /* Protocols.swift in Sources */,
 				AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */,
+				AA7CE87F2571727C003FB753 /* ShareItem.swift in Sources */,
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
 				AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */,
 				AA00D63C2559F843005B97D1 /* CommentTableViewCell.swift in Sources */,

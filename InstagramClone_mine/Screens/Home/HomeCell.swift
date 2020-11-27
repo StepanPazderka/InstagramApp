@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-import LinkPresentation
+
 
 protocol moveToDetailView {
     func MoveToDetailView(id: UUID, sender: CustomCommentButton)
@@ -22,15 +22,11 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bookmarkButton: UIButton!
     @IBAction func ShareButtonTapped(_ sender: Any) {
-        let image = self.postImage.image!
-        let imageToShare: UIImage =  image 
-        
-        let activityViewController = UIActivityViewController(activityItems: [imageToShare, ShareItemDetails(URL: imageFileURL)], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = delegate.view
+
 
 //        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
 
-        delegate.present(activityViewController, animated: true, completion: nil)
+        DatabaseManager().shareItem(delegateVC: delegate, image: postImage.image!, url: imageFileURL)
     }
     
     @IBAction func commentButtonClicked(_ sender: UIButton) {
@@ -74,32 +70,5 @@ class HomeCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-}
-
-class ShareItemDetails: NSObject {
-    var URL: URL?
-    var image: UIImage?
-    
-    init(URL: URL) {
-        self.URL = URL
-    }
-}
-
-extension ShareItemDetails: UIActivityItemSource {
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return ""
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
-        return nil
-    }
-    
-    func activityViewControllerLinkMetadata(_ activityViewController: UIActivityViewController) -> LPLinkMetadata? {
-        let image = UIImage(contentsOfFile: URL!.path)!
-        let imageProvider = NSItemProvider(object: image)
-        let metadata = LPLinkMetadata()
-        metadata.imageProvider = imageProvider
-        return metadata
     }
 }

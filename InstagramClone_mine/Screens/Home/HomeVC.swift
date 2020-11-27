@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class HomeVC: UIViewController, showsDetailView {
+class HomeVC: UIViewController, showsDetailView, canShareItem {
     @IBOutlet var tableView: UITableView!
     
     var postsArray: [Post] = [] // Holds array of Post objects from DB
@@ -58,6 +58,11 @@ class HomeVC: UIViewController, showsDetailView {
             alertDialog.addAction(cancelButton)
             self.present(alertDialog, animated: true, completion: nil)
         }
+    }
+    
+    func showShareScreen(activityVC: UIActivityViewController) {
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
     }
 }
 
