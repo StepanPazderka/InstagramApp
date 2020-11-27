@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,22 +10,24 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailScreenVC" customModule="InstagramClone_mine" customModuleProvider="target">
             <connections>
+                <outlet property="DetailScreenBottomConstraint" destination="N9E-bH-aKT" id="seE-ry-vnA"/>
                 <outlet property="commentsTableView" destination="uDz-6N-OQG" id="8dS-vI-OmX"/>
                 <outlet property="coommentsTableViewHeightConstraint" destination="SRk-8X-Uh6" id="bMN-vs-SGf"/>
                 <outlet property="descriptionHeightConstraint" destination="sSK-YA-4Nc" id="oR9-K4-umx"/>
                 <outlet property="newCommentTextView" destination="5hH-at-cYm" id="1x3-tb-QfT"/>
                 <outlet property="postScreenImageView" destination="g5I-Dy-td4" id="bTB-sE-pFw"/>
                 <outlet property="postScrenDescriptionLabel" destination="KBn-cP-SkD" id="ZiF-4h-FbY"/>
+                <outlet property="scrollView" destination="qvv-xV-W70" id="3S2-Bz-iCr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1037"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-xV-W70">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="1037"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-zE-yQH">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
@@ -87,6 +90,7 @@
                                         <constraint firstItem="UEH-ZE-6am" firstAttribute="leading" secondItem="5hH-at-cYm" secondAttribute="trailing" id="5SP-OE-Cyv"/>
                                         <constraint firstItem="5hH-at-cYm" firstAttribute="leading" secondItem="0SR-i0-KgE" secondAttribute="leading" id="Az6-AW-e1F"/>
                                         <constraint firstAttribute="trailing" secondItem="UEH-ZE-6am" secondAttribute="trailing" id="RwJ-fq-18I"/>
+                                        <constraint firstItem="UEH-ZE-6am" firstAttribute="height" secondItem="5hH-at-cYm" secondAttribute="height" multiplier="0.3" id="dck-lA-zgd"/>
                                         <constraint firstItem="5hH-at-cYm" firstAttribute="top" secondItem="0SR-i0-KgE" secondAttribute="top" id="oib-9E-Nr4"/>
                                     </constraints>
                                     <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>

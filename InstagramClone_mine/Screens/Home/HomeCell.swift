@@ -13,7 +13,7 @@ protocol moveToDetailView {
     func MoveToDetailView(id: UUID, sender: CustomCommentButton)
 }
 
-class HomeTableViewCell: UITableViewCell {
+class HomeCell: UITableViewCell {
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var commentButton: CustomCommentButton!
     @IBOutlet weak var likeButton: UIButton!

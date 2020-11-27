@@ -91,6 +91,8 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="TDh-qO-WZ9" firstAttribute="leading" secondItem="rKb-D0-y0Y" secondAttribute="leading" constant="8" id="1Im-8a-aQ4"/>
+                        <constraint firstItem="TDh-qO-WZ9" firstAttribute="top" secondItem="rKb-D0-y0Y" secondAttribute="top" constant="52" id="Obp-nt-nlw"/>
                         <constraint firstItem="k75-hL-zRc" firstAttribute="centerX" secondItem="rKb-D0-y0Y" secondAttribute="centerX" id="k5W-WH-0K3"/>
                     </constraints>
                     <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>

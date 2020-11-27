@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class SelfSizedTableView: UITableView {
-    
     override func reloadData() {
         super.reloadData()
         self.invalidateIntrinsicContentSize()

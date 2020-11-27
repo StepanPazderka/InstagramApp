@@ -9,12 +9,6 @@ import UIKit
 import Foundation
 
 class AddPostScreenVC: UIViewController {
-    lazy var appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-    lazy var context = appDelegate.persisentContainer.viewContext
-    
-    var id = UUID()
-    var fm = FileManager.default
-    var delegate: HomeVC?
     @IBOutlet weak var textView: UITextView?
     @IBOutlet weak var imageView: UIImageView?
     @IBOutlet weak var AddImageButton: UIButton!
@@ -33,12 +27,9 @@ class AddPostScreenVC: UIViewController {
         self.present(alertDialog, animated: true, completion: nil)
         print("User tapped image")
     }
-    
     @IBAction func closeButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
     @IBAction func tappedPost(_ sender: Any) {
         guard (imageView!.image != nil) else {
             let alert = UIAlertController(title: "Can't post", message: "You have to pick an image", preferredStyle: .alert)
@@ -60,26 +51,17 @@ class AddPostScreenVC: UIViewController {
         }
 
         self.delegate!.reloadDataAndViews()
-        
         self.dismiss(animated: true, completion: nil)
     }
     
+    var id = UUID()
+    var fm = FileManager.default
+    var delegate: HomeVC?
     var mainBundlePath = Bundle.main.resourcePath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.textView?.delegate = self
-        textView?.textColor = .darkGray
-        
-        textView!.layer.cornerRadius = 10;
-        textView!.layer.masksToBounds = true;
-        textView!.layer.borderWidth = 0;
-        textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        textView!.textColor = UIColor.label
-    }
-    
-    override func loadView() {
-        super.loadView()
+        self.configureAddCommentTextView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +72,16 @@ class AddPostScreenVC: UIViewController {
         if (imageView?.image == nil) {
             //AddImageButton.isHidden = false
         }
+    }
+    
+    func configureAddCommentTextView() {
+        self.textView?.delegate = self
+        textView?.textColor = .darkGray
+        textView!.layer.cornerRadius = 10;
+        textView!.layer.masksToBounds = true;
+        textView!.layer.borderWidth = 0;
+        textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView!.textColor = UIColor.label
     }
 }
 
@@ -121,4 +113,3 @@ extension AddPostScreenVC: UITextViewDelegate {
         }
     }
 }
-

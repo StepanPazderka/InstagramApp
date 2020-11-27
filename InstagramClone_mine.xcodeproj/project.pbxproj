@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,10 +20,9 @@
 		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
-		AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */; };
-		AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */; };
 		AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */; };
 		AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */; };
+		AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */; };
 		AA7D5A3B2557614B00473556 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D5A3A2557614B00473556 /* DatabaseManager.swift */; };
 		AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9095F425532DE800377845 /* AddScreenVC.swift */; };
 		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
@@ -32,6 +31,8 @@
 		AAB074A625606D67005509B1 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074A525606D67005509B1 /* HomeVC.xib */; };
 		AAB074AC2560B6C4005509B1 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB074AB2560B6C4005509B1 /* MainTabBar.swift */; };
 		AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074AE2560C880005509B1 /* ProfileVC.xib */; };
+		AADE4613256EDFF60069DD65 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE4612256EDFF60069DD65 /* HomeCell.swift */; };
+		AADE4620256EE0E30069DD65 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AADE461F256EE0E30069DD65 /* HomeCell.xib */; };
 		AAE45480255457A600041BF0 /* DetailScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE4547E255457A600041BF0 /* DetailScreenVC.swift */; };
 		AAE45481255457A600041BF0 /* DetailScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAE4547F255457A600041BF0 /* DetailScreenVC.xib */; };
 /* End PBXBuildFile section */
@@ -52,8 +53,6 @@
 		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = InstagramClone_mine/HomeTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HomeTableViewCell.xib; path = InstagramClone_mine/HomeTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA7D5A3A2557614B00473556 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -64,6 +63,8 @@
 		AAB074A525606D67005509B1 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		AAB074AB2560B6C4005509B1 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		AAB074AE2560C880005509B1 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
+		AADE4612256EDFF60069DD65 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		AADE461F256EE0E30069DD65 /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		AAE4547E255457A600041BF0 /* DetailScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScreenVC.swift; sourceTree = "<group>"; };
 		AAE4547F255457A600041BF0 /* DetailScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailScreenVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +114,7 @@
 				AA79B57A25544FA3002CF9C0 /* Screens */,
 				AA446439253243880091896A /* Assets.xcassets */,
 				AA4DA553253628D400BF435E /* Model.xcdatamodeld */,
+				AAB074AB2560B6C4005509B1 /* MainTabBar.swift */,
 				AA446430253243840091896A /* AppDelegate.swift */,
 				AA44643B253243880091896A /* LaunchScreen.storyboard */,
 				AA44643E253243880091896A /* Info.plist */,
@@ -133,6 +136,28 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AA742633256ED6E300C11F88 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
+				AAB074A525606D67005509B1 /* HomeVC.xib */,
+				AADE4612256EDFF60069DD65 /* HomeCell.swift */,
+				AADE461F256EE0E30069DD65 /* HomeCell.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AA742635256ED6EE00C11F88 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AA4DA54E2535163800BF435E /* ProfileVC.swift */,
+				AAB074AE2560C880005509B1 /* ProfileVC.xib */,
+				AA20515D2556151A009AF1E6 /* ProfileCell.swift */,
+				AA20515E2556151A009AF1E6 /* ProfileCell.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		AA79B57A25544FA3002CF9C0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,11 +165,8 @@
 				AA9095F525532DE800377845 /* AddScreenVC.xib */,
 				AAE4547E255457A600041BF0 /* DetailScreenVC.swift */,
 				AAE4547F255457A600041BF0 /* DetailScreenVC.xib */,
-				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
-				AAB074A525606D67005509B1 /* HomeVC.xib */,
-				AA4DA54E2535163800BF435E /* ProfileVC.swift */,
-				AAB074AE2560C880005509B1 /* ProfileVC.xib */,
-				AAB074AB2560B6C4005509B1 /* MainTabBar.swift */,
+				AA742633256ED6E300C11F88 /* Home */,
+				AA742635256ED6EE00C11F88 /* Profile */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -152,10 +174,6 @@
 		AA7D5A3E255772EC00473556 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				AA20515D2556151A009AF1E6 /* ProfileCell.swift */,
-				AA20515E2556151A009AF1E6 /* ProfileCell.xib */,
-				AA5BD7BA2541907A00D5D553 /* HomeTableViewCell.swift */,
-				AA5BD7BB2541907A00D5D553 /* HomeTableViewCell.xib */,
 				AA00D63A2559F843005B97D1 /* CommentTableViewCell.swift */,
 				AA00D63B2559F843005B97D1 /* CommentTableViewCell.xib */,
 			);
@@ -178,6 +196,9 @@
 			dependencies = (
 			);
 			name = InstagramClone_mine;
+			packageProductDependencies = (
+				AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */,
+			);
 			productName = InstagramClone_mine;
 			productReference = AA44642D253243840091896A /* InstagramClone_mine.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +226,9 @@
 				Base,
 			);
 			mainGroup = AA446424253243840091896A;
+			packageReferences = (
+				AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = AA44642E253243840091896A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -220,12 +244,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAE45481255457A600041BF0 /* DetailScreenVC.xib in Resources */,
+				AADE4620256EE0E30069DD65 /* HomeCell.xib in Resources */,
 				AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */,
 				AA2051602556151A009AF1E6 /* ProfileCell.xib in Resources */,
 				AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */,
 				AAB074A625606D67005509B1 /* HomeVC.xib in Resources */,
 				AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */,
-				AA5BD7BD2541907A00D5D553 /* HomeTableViewCell.xib in Resources */,
 				AA44643A253243880091896A /* Assets.xcassets in Resources */,
 				AA00D63D2559F843005B97D1 /* CommentTableViewCell.xib in Resources */,
 			);
@@ -240,6 +264,7 @@
 			files = (
 				AAB074AC2560B6C4005509B1 /* MainTabBar.swift in Sources */,
 				AAE45480255457A600041BF0 /* DetailScreenVC.swift in Sources */,
+				AADE4613256EDFF60069DD65 /* HomeCell.swift in Sources */,
 				AA446431253243840091896A /* AppDelegate.swift in Sources */,
 				AA7D5A3B2557614B00473556 /* DatabaseManager.swift in Sources */,
 				AA2427AF255DEF4400441459 /* Protocols.swift in Sources */,
@@ -248,7 +273,6 @@
 				AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */,
 				AA00D63C2559F843005B97D1 /* CommentTableViewCell.swift in Sources */,
 				AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */,
-				AA5BD7BC2541907A00D5D553 /* HomeTableViewCell.swift in Sources */,
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
@@ -404,7 +428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pazderka.InstagramClone-mine";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -423,7 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pazderka.InstagramClone-mine";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -449,6 +473,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		AA4DA553253628D400BF435E /* Model.xcdatamodeld */ = {

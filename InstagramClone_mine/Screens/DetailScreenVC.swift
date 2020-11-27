@@ -20,7 +20,6 @@ class DetailScreenVC: UIViewController {
     @IBOutlet weak var newCommentTextView: UITextView!
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
-    
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         if (self.newCommentTextView.text.isEmpty) || (self.newCommentTextView.text.contains("Type your comment")) {
             let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
@@ -33,15 +32,23 @@ class DetailScreenVC: UIViewController {
         loadComments()
         self.commentsTableView.reloadData()
         recalculateCommentsSize()
+        self.newCommentTextView.text = ("Type your comment")
+        self.newCommentTextView.endEditing(true)
     }
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var DetailScreenBottomConstraint: NSLayoutConstraint!
     
+    
+    var selectedID: UUID?
+    var parentPost: Post?
+    var commentsArray: [Comment] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Setting up delegates
         newCommentTextView.delegate = self
         commentsTableView.delegate = self
-        commentsTableView.dataSource = self
         
         let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
         
@@ -50,30 +57,35 @@ class DetailScreenVC: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-        
-        commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: "CommentCell")
 
         layoutPostDescription(label: LoadedPost.label)
         
         parentPost = DatabaseManager().loadPost(id: selectedID!)
-        loadComments()
-        
+            
+        setupCommentsTableView()
+        setupNewCommentTextView()
+    }
+    
+    
+    fileprivate func setupCommentsTableView() {
+        commentsTableView.dataSource = self
+        commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: "CommentCell")
         commentsTableView.reloadData()
         commentsTableView.rowHeight = 50
-        
+        loadComments()
+    }
+    
+    fileprivate func setupNewCommentTextView() {
         newCommentTextView.layer.cornerRadius = 10;
         newCommentTextView.layer.masksToBounds = true;
         newCommentTextView.layer.borderWidth = 0;
         newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         newCommentTextView.textColor = .darkGray
+        newCommentTextView.text = ("Type your comment")
     }
     
-    var selectedID: UUID?
-    var parentPost: Post?
-    var commentsArray: [Comment] = []
-    
     func recalculateCommentsSize () {
-        coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height + 40
+        coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height
     }
     
     fileprivate func layoutPostDescription(label: String!) {
@@ -89,8 +101,6 @@ class DetailScreenVC: UIViewController {
         }
     }
     
-    
-
     func loadComments() {
         commentsArray = DatabaseManager().loadCommentsWithPredicate(predicate: NSPredicate(format: "parentPost == %@", parentPost!))
         print("Comments loaded: \(commentsArray)")
@@ -158,5 +168,14 @@ extension DetailScreenVC: UITextViewDelegate {
             textView.textColor = .darkGray
             textView.text = "Type your comment"
         }
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        let info = notification.userInfo!
+        let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.DetailScreenBottomConstraint.constant = keyboardFrame.size.height + 20
+        })
     }
 }

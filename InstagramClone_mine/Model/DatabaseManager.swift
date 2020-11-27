@@ -54,7 +54,7 @@ class DatabaseManager: UIView {
             postsArray = try context.fetch(fetchRequest)
         }
         catch {
-            
+            print(error.localizedDescription)
         }
         
         return postsArray
@@ -173,5 +173,21 @@ class DatabaseManager: UIView {
         } catch {
             print("Error while saving to Core Data")
         }
+    }
+    
+    func addSampleData() {
+        let firstPostID = UUID()
+        addPost(id: firstPostID, label: "Apprentice", image: UIImage(named: "dog")!)
+        addComment(parentPost: DatabaseManager().loadPost(id: firstPostID), commentContent: "Oh boy")
+        likePost(id: firstPostID, completion: nil)
+        
+        let secondPostID = UUID()
+        addPost(id: secondPostID, label: "Padawan", image: UIImage(named: "luke")!)
+        addComment(parentPost: DatabaseManager().loadPost(id: secondPostID), commentContent: "This movie is a legend")
+        
+        let thirdPostID = UUID()
+        addPost(id: thirdPostID, label: "Master", image: UIImage(named: "yoda")!)
+        addComment(parentPost: DatabaseManager().loadPost(id: thirdPostID), commentContent: "Best movie... ever")
+        bookmarkPost(id: thirdPostID, completion: nil)
     }
 }

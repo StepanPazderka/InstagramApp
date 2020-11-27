@@ -8,7 +8,6 @@
 import UIKit
 import CoreData
 
-
 class HomeVC: UIViewController, showsDetailView {
     @IBOutlet var tableView: UITableView!
     
@@ -26,7 +25,7 @@ class HomeVC: UIViewController, showsDetailView {
             print("Saved image in DB: \(imageName)")
         }
         
-        let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
+        let nib = UINib(nibName: "HomeCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
     }
     
@@ -48,6 +47,17 @@ class HomeVC: UIViewController, showsDetailView {
     
     override func viewDidAppear(_ animated: Bool) {
         reloadDataAndViews()
+        if postsArray.isEmpty {
+            let alertDialog = UIAlertController(title: "This app seems empty", message: nil, preferredStyle: .actionSheet)
+            let addSampleData = UIAlertAction(title: "Add sample data", style: .default) {_ in
+                DatabaseManager().addSampleData()
+                self.reloadDataAndViews()
+            }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+            alertDialog.addAction(addSampleData)
+            alertDialog.addAction(cancelButton)
+            self.present(alertDialog, animated: true, completion: nil)
+        }
     }
 }
 
@@ -58,7 +68,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MARK: Handles creation of new rows in TableView
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeCell
         cell.delegate = self
         cell.postLabel.text = self.postsArray[indexPath.row].label
         let imageName: String = self.postsArray[indexPath.row].image!
@@ -87,7 +97,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("touched \(indexPath.row)")
     }
