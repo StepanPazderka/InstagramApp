@@ -20,6 +20,7 @@
 		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
+		AA680B87257ACF19009E3413 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA680B86257ACF19009E3413 /* Extension.swift */; };
 		AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */; };
 		AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */; };
 		AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */; };
@@ -54,6 +55,7 @@
 		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		AA680B86257ACF19009E3413 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		AA79B57525535A5D002CF9C0 /* Post+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA79B57625535A5D002CF9C0 /* Post+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AA7CE87E2571727C003FB753 /* ShareItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareItem.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				AA44643B253243880091896A /* LaunchScreen.storyboard */,
 				AA44643E253243880091896A /* Info.plist */,
 				AA2427AE255DEF4400441459 /* Protocols.swift */,
+				AA680B86257ACF19009E3413 /* Extension.swift */,
 			);
 			path = InstagramClone_mine;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
+				AA680B87257ACF19009E3413 /* Extension.swift in Sources */,
 				AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */,
 				AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */,
 				AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */,

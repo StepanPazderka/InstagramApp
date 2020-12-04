@@ -23,11 +23,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="1019"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="1001"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvv-xV-W70">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="1019"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1001"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-zE-yQH">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="950"/>
@@ -141,7 +141,7 @@
                 <constraint firstItem="qvv-xV-W70" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NkZ-8Q-m3T"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-8.6956521739130448" y="221.98660714285714"/>
+            <point key="canvasLocation" x="-8.6956521739130448" y="215.95982142857142"/>
         </view>
     </objects>
     <resources>

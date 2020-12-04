@@ -15,6 +15,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         delegate = self
         
+        HomeScreen.edgesForExtendedLayout = UIRectEdge.all
         let StreamTab = UINavigationController(rootViewController: HomeScreen)
         StreamTab.navigationBar.isTranslucent = true
         StreamTab.navigationBar.backgroundColor = UIColor.clear
