@@ -25,6 +25,8 @@ class DetailScreenVC: UIViewController, canShareItem {
     @IBOutlet weak var newCommentTextView: UITextView!
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         if (self.newCommentTextView.text.isEmpty) || (self.newCommentTextView.text.contains("Type your comment")) {
             let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
@@ -55,6 +57,17 @@ class DetailScreenVC: UIViewController, canShareItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.height / 2;
+        profilePictureImageView.layer.masksToBounds = true;
+        profilePictureImageView.layer.borderWidth = 0;
+        
+        do {
+            try self.profilePictureImageView.image = ImageManager().loadImage(image: "profile")
+        } catch {
+            print("Profile not found")
+        }
+        
+        
         // Setting up delegates
         newCommentTextView.delegate = self
         commentsTableView.delegate = self
@@ -70,26 +83,30 @@ class DetailScreenVC: UIViewController, canShareItem {
         layoutPostDescription(label: LoadedPost.label)
         
         parentPost = DatabaseManager().loadPost(id: selectedID!)
-            
+
+        
+        loadComments()
         setupCommentsTableView()
-        setupNewCommentTextView()
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupNewCommentTextView()
+    }
     
     fileprivate func setupCommentsTableView() {
         commentsTableView.dataSource = self
         commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: "CommentCell")
         commentsTableView.reloadData()
         commentsTableView.rowHeight = 50
-        loadComments()
     }
     
     fileprivate func setupNewCommentTextView() {
+        newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        newCommentTextView.textColor = .darkGray
         newCommentTextView.layer.cornerRadius = 10;
         newCommentTextView.layer.masksToBounds = true;
         newCommentTextView.layer.borderWidth = 0;
-        newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        newCommentTextView.textColor = .darkGray
         newCommentTextView.text = ("Type your comment")
     }
     

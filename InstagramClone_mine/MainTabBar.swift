@@ -19,6 +19,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
         let StreamTab = UINavigationController(rootViewController: HomeScreen)
         StreamTab.navigationBar.isTranslucent = true
         StreamTab.navigationBar.backgroundColor = UIColor.clear
+        
         StreamTab.navigationBar.topItem?.title = "Home"
         let StreamTabIcon = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
         StreamTab.tabBarItem = StreamTabIcon

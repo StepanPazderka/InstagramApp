@@ -8,7 +8,6 @@
 import UIKit
 
 class CommentTableViewCell: UITableViewCell {
-
     @IBOutlet weak var commentContent: UITextView!
     @IBOutlet weak var userImage: UIImageView!
     
