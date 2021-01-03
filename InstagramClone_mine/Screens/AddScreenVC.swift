@@ -97,6 +97,8 @@ class AddPostScreenVC: UIViewController {
         textView!.layer.borderWidth = 0;
         textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         textView!.textColor = UIColor.label
+        textView!.layer.borderWidth = 1
+        textView!.layer.borderColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).cgColor
     }
 }
 

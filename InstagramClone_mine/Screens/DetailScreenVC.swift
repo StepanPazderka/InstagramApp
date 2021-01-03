@@ -108,6 +108,8 @@ class DetailScreenVC: UIViewController, canShareItem {
         newCommentTextView.layer.masksToBounds = true;
         newCommentTextView.layer.borderWidth = 0;
         newCommentTextView.text = ("Type your comment")
+        newCommentTextView.layer.borderWidth = 1
+        newCommentTextView.layer.borderColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).cgColor
     }
     
     func recalculateCommentsSize () {
