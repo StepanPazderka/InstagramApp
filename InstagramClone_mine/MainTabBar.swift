@@ -21,16 +21,16 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
         StreamTab.navigationBar.backgroundColor = UIColor.clear
         
         StreamTab.navigationBar.topItem?.title = "Home"
-        let StreamTabIcon = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
+        let StreamTabIcon = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         StreamTab.tabBarItem = StreamTabIcon
         
         let AddPostTab = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
-        let AddPostTabIcon = UITabBarItem(title: nil, image: UIImage(systemName: "plus"), tag: 2)
+        let AddPostTabIcon = UITabBarItem(title: "Add post", image: UIImage(systemName: "plus"), tag: 2)
         AddPostTab.tabBarItem = AddPostTabIcon
         
         let ProfileTab = UINavigationController(rootViewController: ProfileVC(nibName: "ProfileVC", bundle: nil))
         ProfileTab.navigationBar.topItem?.title = "Saved"
-        let ProfileTabIcon = UITabBarItem(title: nil, image: UIImage(systemName: "bookmark"), tag: 3)
+        let ProfileTabIcon = UITabBarItem(title: "Profile", image: UIImage(systemName: "bookmark"), tag: 3)
         ProfileTab.tabBarItem = ProfileTabIcon
         
         let controllers = [StreamTab, AddPostTab, ProfileTab]
