@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import RxSwift
 
 protocol DetailDelegate {
     func didSelectRow()
@@ -17,8 +18,6 @@ class DetailScreenVC: UIViewController, canShareItem {
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
-    
-    var delegate: showsDetailView!
     @IBOutlet weak var postScreenImageView: UIImageView!
     @IBOutlet weak var postScrenDescriptionLabel: UITextView!
     @IBOutlet weak var commentsTableView: SelfSizedTableView!
@@ -26,7 +25,8 @@ class DetailScreenVC: UIViewController, canShareItem {
     @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profilePictureImageView: UIImageView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var DetailScreenBottomConstraint: NSLayoutConstraint!
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         if (self.newCommentTextView.text.isEmpty) || (self.newCommentTextView.text.contains("Type your comment")) {
             let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
@@ -42,17 +42,36 @@ class DetailScreenVC: UIViewController, canShareItem {
         self.newCommentTextView.text = ("Type your comment")
         self.newCommentTextView.endEditing(true)
     }
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var DetailScreenBottomConstraint: NSLayoutConstraint!
     @IBAction func shareButtonTapped(_ sender: Any) {
         let imagePath = ImageManager().retrieveFullImagePath(imageName: selectedID!.uuidString)
         
         DatabaseManager().shareItem(delegateVC: self, image: postScreenImageView.image!, url: URL(fileURLWithPath: imagePath))
     }
     
+    var delegate: showsDetailView!
     var selectedID: UUID?
     var parentPost: Post?
     var commentsArray: [Comment] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        newCommentTextView.delegate = self
+        commentsTableView.delegate = self
+        
+        loadComments()
+        setupCommentsTableView()
+        
+        let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
+
+        do {
+            postScreenImageView.image = try ImageManager().loadImage(image: LoadedPost.image!)
+        } catch {
+            print(error.localizedDescription)
+        }
+
+        layoutPostDescription(label: LoadedPost.label)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,29 +83,9 @@ class DetailScreenVC: UIViewController, canShareItem {
         do {
             try self.profilePictureImageView.image = ImageManager().loadImage(image: "profile")
         } catch {
-            print("Profile not found")
+            print("Profile picture not found")
         }
-        
-        
-        // Setting up delegates
-        newCommentTextView.delegate = self
-        commentsTableView.delegate = self
-        
-        let LoadedPost: Post = DatabaseManager().loadPost(id: selectedID!)
-        
-        do {
-            postScreenImageView.image = try ImageManager().loadImage(image: LoadedPost.image!)
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        layoutPostDescription(label: LoadedPost.label)
-        
         parentPost = DatabaseManager().loadPost(id: selectedID!)
-
-        
-        loadComments()
-        setupCommentsTableView()
     }
     
     override func viewWillLayoutSubviews() {
@@ -94,14 +93,14 @@ class DetailScreenVC: UIViewController, canShareItem {
         setupNewCommentTextView()
     }
     
-    fileprivate func setupCommentsTableView() {
+    func setupCommentsTableView() {
         commentsTableView.dataSource = self
-        commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: "CommentCell")
+        commentsTableView.register(CommentTableViewCell.nib, forCellReuseIdentifier: CommentTableViewCell.identifier)
         commentsTableView.reloadData()
         commentsTableView.rowHeight = 50
     }
     
-    fileprivate func setupNewCommentTextView() {
+    func setupNewCommentTextView() {
         newCommentTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         newCommentTextView.textColor = .darkGray
         newCommentTextView.layer.cornerRadius = 10;
@@ -115,6 +114,8 @@ class DetailScreenVC: UIViewController, canShareItem {
     func recalculateCommentsSize () {
         coommentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height
     }
+    
+    /// Sets up design of the description textView below post imageview
     
     fileprivate func layoutPostDescription(label: String!) {
         postScrenDescriptionLabel.text = label
@@ -155,7 +156,7 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+        let cell = commentsTableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.identifier, for: indexPath) as! CommentTableViewCell
         cell.commentContent.text = self.commentsArray[indexPath.row].text
         cell.userImage.contentMode = .scaleAspectFill
         

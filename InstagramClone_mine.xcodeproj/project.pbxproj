@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F0F46DC25A60B7B00C4302C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0F46DB25A60B7B00C4302C /* ApplicationCoordinator.swift */; };
+		7F4B2A8725A4FF62008FBF3F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4B2A8625A4FF62008FBF3F /* RxSwift */; };
+		7FAB6AD125A711AB00DDA0F5 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAB6AD025A711AB00DDA0F5 /* ProfileTabCoordinator.swift */; };
+		7FB6796725A5BE3900DD198F /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6796625A5BE3900DD198F /* HomeCoordinator.swift */; };
+		7FCEE3CD25A49FF100F51C18 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCEE3CC25A49FF100F51C18 /* Coordinator.swift */; };
 		AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00D6352559F774005B97D1 /* SelfSizedTableView.swift */; };
 		AA00D63C2559F843005B97D1 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00D63A2559F843005B97D1 /* CommentTableViewCell.swift */; };
 		AA00D63D2559F843005B97D1 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA00D63B2559F843005B97D1 /* CommentTableViewCell.xib */; };
@@ -40,6 +45,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F0F46DB25A60B7B00C4302C /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		7FAB6AD025A711AB00DDA0F5 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
+		7FB6796625A5BE3900DD198F /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		7FCEE3CC25A49FF100F51C18 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		AA00D6352559F774005B97D1 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		AA00D63A2559F843005B97D1 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		AA00D63B2559F843005B97D1 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
@@ -78,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4B2A8725A4FF62008FBF3F /* RxSwift in Frameworks */,
 				AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +95,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F2411F125A6095900383F82 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				7FCEE3CC25A49FF100F51C18 /* Coordinator.swift */,
+				7FB6796625A5BE3900DD198F /* HomeCoordinator.swift */,
+				7F0F46DB25A60B7B00C4302C /* ApplicationCoordinator.swift */,
+				7FAB6AD025A711AB00DDA0F5 /* ProfileTabCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		AA00D6342559F75F005B97D1 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +133,7 @@
 		AA44642F253243840091896A /* InstagramClone_mine */ = {
 			isa = PBXGroup;
 			children = (
+				7F2411F125A6095900383F82 /* Coordinators */,
 				AA00D6342559F75F005B97D1 /* CustomViews */,
 				AA7D5A3E255772EC00473556 /* Cells */,
 				AA4DA55C25363DF200BF435E /* Model */,
@@ -204,6 +226,7 @@
 			name = InstagramClone_mine;
 			packageProductDependencies = (
 				AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */,
+				7F4B2A8625A4FF62008FBF3F /* RxSwift */,
 			);
 			productName = InstagramClone_mine;
 			productReference = AA44642D253243840091896A /* InstagramClone_mine.app */;
@@ -234,6 +257,7 @@
 			mainGroup = AA446424253243840091896A;
 			packageReferences = (
 				AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = AA44642E253243840091896A /* Products */;
 			projectDirPath = "";
@@ -277,17 +301,21 @@
 				AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */,
 				AA7CE87F2571727C003FB753 /* ShareItem.swift in Sources */,
 				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
+				7FB6796725A5BE3900DD198F /* HomeCoordinator.swift in Sources */,
 				AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */,
 				AA00D63C2559F843005B97D1 /* CommentTableViewCell.swift in Sources */,
+				7F0F46DC25A60B7B00C4302C /* ApplicationCoordinator.swift in Sources */,
 				AA9095F625532DE800377845 /* AddScreenVC.swift in Sources */,
 				AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */,
 				AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */,
 				AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */,
 				AA680B87257ACF19009E3413 /* Extension.swift in Sources */,
+				7FAB6AD125A711AB00DDA0F5 /* ProfileTabCoordinator.swift in Sources */,
 				AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */,
 				AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */,
 				AA79B57825535A5D002CF9C0 /* Post+CoreDataProperties.swift in Sources */,
 				AA20515F2556151A009AF1E6 /* ProfileCell.swift in Sources */,
+				7FCEE3CD25A49FF100F51C18 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +511,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
@@ -494,6 +530,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7F4B2A8625A4FF62008FBF3F /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;

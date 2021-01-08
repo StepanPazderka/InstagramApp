@@ -32,6 +32,7 @@ extension ShareItemDetails: UIActivityItemSource {
         let imageProvider = NSItemProvider(object: image)
         let metadata = LPLinkMetadata()
         metadata.imageProvider = imageProvider
+        metadata.title = URL?.baseURL?.absoluteString ?? "Image"
         return metadata
     }
 }

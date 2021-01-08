@@ -10,6 +10,7 @@ import CoreData
 
 class HomeVC: UIViewController, showsDetailView, canShareItem {
     @IBOutlet var tableView: UITableView!
+    var coordinator: HomeCoordinator?
     
     var postsArray: [Post] = [] // Holds array of Post objects from DB
     public var selectedID: String = "None"
@@ -33,15 +34,12 @@ class HomeVC: UIViewController, showsDetailView, canShareItem {
         let DetailScreen = DetailScreenVC()
         DetailScreen.selectedID = id
         DetailScreen.delegate = self
-        self.navigationController!.pushViewController(DetailScreen, animated: true)
+        self.navigationController?.pushViewController(DetailScreen, animated: true)
     }
 
     func reloadDataAndViews() {
         postsArray = DatabaseManager().loadAllPosts()
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
         print("Reloading data")
     }
     
@@ -75,6 +73,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         // MARK: Handles creation of new rows in TableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeCell
         cell.delegate = self
+        cell.coordinator = self.coordinator
         cell.postLabel.text = self.postsArray[indexPath.row].label
         let imageName: String = self.postsArray[indexPath.row].image!
         cell.postImage.image = UIImage(contentsOfFile: ImageManager().galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
@@ -116,7 +115,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             DatabaseManager().delete(post: postsArray[indexPath.row] as Post)
             self.postsArray.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .fade)
-            self.tableView.reloadData()
+//            self.reloadDataAndViews()
         }
     }
 }

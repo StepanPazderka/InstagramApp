@@ -32,6 +32,7 @@ class ProfileVC: UIViewController, showsDetailView {
     
     var postsArray: [Post] = []
     var selectedID: UUID!
+    var coordinator: Coordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

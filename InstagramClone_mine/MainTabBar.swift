@@ -8,22 +8,23 @@
 import UIKit
 
 class MainTabBar: UITabBarController, UITabBarControllerDelegate {
-
-    var HomeScreen = HomeVC(nibName: "HomeVC", bundle: nil)
+    var coordinator: ApplicationCoordinator!
+    var HomeScreen = HomeVC(nibName: "HomeVC", bundle: Bundle.main)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-        
+
         HomeScreen.edgesForExtendedLayout = UIRectEdge.all
-        let StreamTab = UINavigationController(rootViewController: HomeScreen)
-        StreamTab.navigationBar.isTranslucent = true
-        StreamTab.navigationBar.backgroundColor = UIColor.clear
+        let StreamTab = HomeCoordinator(navigationController: UINavigationController(), rootViewController: HomeScreen)
+        StreamTab.navigation.navigationBar.isTranslucent = true
+        StreamTab.navigation.navigationBar.backgroundColor = UIColor.clear
+        StreamTab.start()
         
-        StreamTab.navigationBar.topItem?.title = "Home"
+        StreamTab.navigation.navigationBar.topItem?.title = "Home"
         let StreamTabIcon = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
-        StreamTab.tabBarItem = StreamTabIcon
-        
+        StreamTab.navigation.tabBarItem = StreamTabIcon
+     
         let AddPostTab = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
         let AddPostTabIcon = UITabBarItem(title: "Add post", image: UIImage(systemName: "plus"), tag: 2)
         AddPostTab.tabBarItem = AddPostTabIcon
@@ -33,7 +34,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
         let ProfileTabIcon = UITabBarItem(title: "Profile", image: UIImage(systemName: "bookmark"), tag: 3)
         ProfileTab.tabBarItem = ProfileTabIcon
         
-        let controllers = [StreamTab, AddPostTab, ProfileTab]
+        let controllers = [StreamTab.navigation, AddPostTab, ProfileTab]
         self.viewControllers = controllers
     }
     
