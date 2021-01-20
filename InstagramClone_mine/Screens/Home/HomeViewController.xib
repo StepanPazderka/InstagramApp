@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="InstagramClone_mine" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="zmu-Yf-0AS" id="ijP-aI-Bj1"/>
                 <outlet property="view" destination="iN0-l3-epB" id="VLI-PL-fVi"/>
             </connections>
         </placeholder>

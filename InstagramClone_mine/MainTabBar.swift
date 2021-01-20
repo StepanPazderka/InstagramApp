@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBar: UITabBarController, UITabBarControllerDelegate {
     var coordinator: ApplicationCoordinator!
-    var HomeScreen = HomeVC(nibName: "HomeVC", bundle: Bundle.main)
+    var HomeScreen = HomeVC(nibName: "HomeViewController", bundle: Bundle.main)
     
     override func viewDidLoad() {
         super.viewDidLoad()

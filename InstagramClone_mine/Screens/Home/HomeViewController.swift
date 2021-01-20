@@ -7,9 +7,10 @@
 
 import UIKit
 import CoreData
+import Stevia
 
 class HomeVC: UIViewController, showsDetailView, canShareItem {
-    @IBOutlet var tableView: UITableView!
+    var tableView: UITableView = UITableView()
     var coordinator: HomeCoordinator?
     
     var postsArray: [Post] = [] // Holds array of Post objects from DB
@@ -28,6 +29,13 @@ class HomeVC: UIViewController, showsDetailView, canShareItem {
         
         let nib = UINib(nibName: "HomeCell", bundle: Bundle.main)
         self.tableView.register(nib, forCellReuseIdentifier: "Post")
+        
+        view.subviews(tableView)
+//        tableView.fillHorizontally()
+//        tableView.fillVertically(padding: 100.0)
+        view.layout(100,
+                    |-50 - tableView - 50-|,
+                    100)
     }
     
     func moveToDetailView(id: UUID) {

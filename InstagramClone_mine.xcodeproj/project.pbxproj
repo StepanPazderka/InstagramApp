@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F0F46DC25A60B7B00C4302C /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0F46DB25A60B7B00C4302C /* ApplicationCoordinator.swift */; };
+		7F23CCC925B866EA005EEA1D /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 7F23CCC825B866EA005EEA1D /* Stevia */; };
 		7F4B2A8725A4FF62008FBF3F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4B2A8625A4FF62008FBF3F /* RxSwift */; };
 		7FAB6AD125A711AB00DDA0F5 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAB6AD025A711AB00DDA0F5 /* ProfileTabCoordinator.swift */; };
 		7FB6796725A5BE3900DD198F /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB6796625A5BE3900DD198F /* HomeCoordinator.swift */; };
@@ -21,7 +22,7 @@
 		AA446431253243840091896A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA446430253243840091896A /* AppDelegate.swift */; };
 		AA44643A253243880091896A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA446439253243880091896A /* Assets.xcassets */; };
 		AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA44643B253243880091896A /* LaunchScreen.storyboard */; };
-		AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA5402533BC3C00BF435E /* HomeVC.swift */; };
+		AA4DA5412533BC3C00BF435E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA5402533BC3C00BF435E /* HomeViewController.swift */; };
 		AA4DA54F2535163900BF435E /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA54E2535163800BF435E /* ProfileVC.swift */; };
 		AA4DA555253628D500BF435E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA553253628D400BF435E /* Model.xcdatamodeld */; };
 		AA4DA56325374FE200BF435E /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4DA56225374FE100BF435E /* ImageManager.swift */; };
@@ -35,7 +36,7 @@
 		AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9095F525532DE800377845 /* AddScreenVC.xib */; };
 		AA9AAB262538B54A0003203C /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */; };
 		AA9AAB272538B54A0003203C /* Comment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */; };
-		AAB074A625606D67005509B1 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074A525606D67005509B1 /* HomeVC.xib */; };
+		AAB074A625606D67005509B1 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074A525606D67005509B1 /* HomeViewController.xib */; };
 		AAB074AC2560B6C4005509B1 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB074AB2560B6C4005509B1 /* MainTabBar.swift */; };
 		AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAB074AE2560C880005509B1 /* ProfileVC.xib */; };
 		AADE4613256EDFF60069DD65 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADE4612256EDFF60069DD65 /* HomeCell.swift */; };
@@ -60,7 +61,7 @@
 		AA446439253243880091896A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA44643C253243880091896A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA44643E253243880091896A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA4DA5402533BC3C00BF435E /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		AA4DA5402533BC3C00BF435E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		AA4DA54E2535163800BF435E /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AA4DA554253628D400BF435E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		AA4DA56225374FE100BF435E /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -73,7 +74,7 @@
 		AA9095F525532DE800377845 /* AddScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddScreenVC.xib; sourceTree = "<group>"; };
 		AA9AAB222538B54A0003203C /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA9AAB232538B54A0003203C /* Comment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AAB074A525606D67005509B1 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		AAB074A525606D67005509B1 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		AAB074AB2560B6C4005509B1 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		AAB074AE2560C880005509B1 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		AADE4612256EDFF60069DD65 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F23CCC925B866EA005EEA1D /* Stevia in Frameworks */,
 				7F4B2A8725A4FF62008FBF3F /* RxSwift in Frameworks */,
 				AA7CE87B2571691B003FB753 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -167,8 +169,8 @@
 		AA742633256ED6E300C11F88 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				AA4DA5402533BC3C00BF435E /* HomeVC.swift */,
-				AAB074A525606D67005509B1 /* HomeVC.xib */,
+				AA4DA5402533BC3C00BF435E /* HomeViewController.swift */,
+				AAB074A525606D67005509B1 /* HomeViewController.xib */,
 				AADE4612256EDFF60069DD65 /* HomeCell.swift */,
 				AADE461F256EE0E30069DD65 /* HomeCell.xib */,
 			);
@@ -227,6 +229,7 @@
 			packageProductDependencies = (
 				AA7CE87A2571691B003FB753 /* IQKeyboardManagerSwift */,
 				7F4B2A8625A4FF62008FBF3F /* RxSwift */,
+				7F23CCC825B866EA005EEA1D /* Stevia */,
 			);
 			productName = InstagramClone_mine;
 			productReference = AA44642D253243840091896A /* InstagramClone_mine.app */;
@@ -258,6 +261,7 @@
 			packageReferences = (
 				AA7CE8792571691B003FB753 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */,
+				7F23CCC725B866EA005EEA1D /* XCRemoteSwiftPackageReference "Stevia" */,
 			);
 			productRefGroup = AA44642E253243840091896A /* Products */;
 			projectDirPath = "";
@@ -278,7 +282,7 @@
 				AA44643D253243880091896A /* LaunchScreen.storyboard in Resources */,
 				AA2051602556151A009AF1E6 /* ProfileCell.xib in Resources */,
 				AAB074AF2560C880005509B1 /* ProfileVC.xib in Resources */,
-				AAB074A625606D67005509B1 /* HomeVC.xib in Resources */,
+				AAB074A625606D67005509B1 /* HomeViewController.xib in Resources */,
 				AA9095F725532DE800377845 /* AddScreenVC.xib in Resources */,
 				AA44643A253243880091896A /* Assets.xcassets in Resources */,
 				AA00D63D2559F843005B97D1 /* CommentTableViewCell.xib in Resources */,
@@ -300,7 +304,7 @@
 				AA2427AF255DEF4400441459 /* Protocols.swift in Sources */,
 				AA79B57725535A5D002CF9C0 /* Post+CoreDataClass.swift in Sources */,
 				AA7CE87F2571727C003FB753 /* ShareItem.swift in Sources */,
-				AA4DA5412533BC3C00BF435E /* HomeVC.swift in Sources */,
+				AA4DA5412533BC3C00BF435E /* HomeViewController.swift in Sources */,
 				7FB6796725A5BE3900DD198F /* HomeCoordinator.swift in Sources */,
 				AA00D6362559F774005B97D1 /* SelfSizedTableView.swift in Sources */,
 				AA00D63C2559F843005B97D1 /* CommentTableViewCell.swift in Sources */,
@@ -511,6 +515,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7F23CCC725B866EA005EEA1D /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/s4cha/Stevia";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 		7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -530,6 +542,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7F23CCC825B866EA005EEA1D /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F23CCC725B866EA005EEA1D /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
 		7F4B2A8625A4FF62008FBF3F /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7F4B2A8525A4FF62008FBF3F /* XCRemoteSwiftPackageReference "RxSwift" */;
