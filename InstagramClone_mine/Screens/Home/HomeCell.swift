@@ -66,8 +66,8 @@ class HomeCell: UITableViewCell {
         self.textViewHeight.constant = 0
         postImage.isUserInteractionEnabled = true
         
-//        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchGesture))
-//        postImage.addGestureRecognizer(pinchRecognizer)
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchGesture))
+        postImage.addGestureRecognizer(pinchRecognizer)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -75,14 +75,43 @@ class HomeCell: UITableViewCell {
     }
     
     @objc func pinchGesture(sender: UIPinchGestureRecognizer) {
-        let defaultZoom = sender.view?.transform
+//        let defaultZoom = sender.view?.transform
         
         if (sender.state == .began || sender.state == .changed)
         {
-            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
-            sender.scale = 1.0
+            let currentScale = self.postImage.frame.size.width / self.postImage.bounds.size.width
+            let newScale = currentScale*sender.scale
+//
+//            if newScale < 1 {
+//            newScale = 1
+//            }
+//
+//            if newScale > 6 {
+//            newScale = 6
+//            }
+            
+            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+            self.postImage.transform = transform
+            sender.scale = 1
+            
+//            sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+//            sender.scale = 1.0
+//
+//            if sender.scale < 1 {
+//                sender.scale = 1
+//            }
+            
         } else {
-            sender.view?.transform = defaultZoom!
+//            sender.view?.transform = defaultZoom!
+            
+            let currentScale = self.postImage.frame.size.width / self.postImage.bounds.size.width
+            var newScale = currentScale*sender.scale
+
+            newScale = 1
+            
+            let transform = CGAffineTransform(scaleX: newScale, y: newScale)
+            self.postImage.transform = transform
+            sender.scale = 1
         }
     }
 }
