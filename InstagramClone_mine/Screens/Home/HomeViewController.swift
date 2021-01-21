@@ -27,19 +27,19 @@ class HomeVC: UIViewController, showsDetailView, canShareItem {
             print("Saved image in DB: \(imageName)")
         }
         
-        let nib = UINib(nibName: "HomeCell", bundle: Bundle.main)
-        self.tableView.register(nib, forCellReuseIdentifier: "Post")
-        
+//        let nib = UINib(nibName: "HomeCell", bundle: Bundle.main)
+//        self.tableView.register(HomeCell, forCellReuseIdentifier: "Post")
         view.subviews(tableView)
+        tableView.registerCell(HomeCell.self)
 //        tableView.fillHorizontally()
 //        tableView.fillVertically(padding: 100.0)
-        view.layout(100,
-                    |-50 - tableView - 50-|,
-                    100)
+        view.layout(0,
+                    |tableView|,
+                    0)
     }
     
     func moveToDetailView(id: UUID) {
-        let DetailScreen = DetailScreenVC()
+        let DetailScreen = PostDetailViewController()
         DetailScreen.selectedID = id
         DetailScreen.delegate = self
         self.navigationController?.pushViewController(DetailScreen, animated: true)
@@ -79,12 +79,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MARK: Handles creation of new rows in TableView
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Post", for: indexPath) as! HomeCell
+        let cell = tableView.dequeueCell(cellType: HomeCell.self, for: indexPath)
         cell.delegate = self
         cell.coordinator = self.coordinator
         cell.postLabel.text = self.postsArray[indexPath.row].label
         let imageName: String = self.postsArray[indexPath.row].image!
-        cell.postImage.image = UIImage(contentsOfFile: ImageManager().galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
+        cell.postImage = UIImage(contentsOfFile: ImageManager().galleryPath.appendingPathComponent(imageName).appendingPathExtension("jpg").path)
         cell.commentButton.id = self.postsArray[indexPath.row].id!
         cell.id = self.postsArray[indexPath.row].id!
         

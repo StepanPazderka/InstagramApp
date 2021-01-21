@@ -7,13 +7,15 @@
 
 import UIKit
 import Foundation
+import Stevia
 
-class AddPostScreenVC: UIViewController {
-    @IBOutlet weak var textView: UITextView?
-    @IBOutlet weak var imageView: UIImageView?
-    @IBOutlet weak var AddImageButton: UIButton!
-    @IBOutlet weak var postButton: UIButton!
-    @IBAction func imageTapped(_ sender: Any) {
+class AddPostViewController: UIViewController {
+    var textView = UITextView()
+    var imageView = UIImageView()
+    var selectImageButton = UIButton()
+    var postButton = UIButton()
+    var closeButton = UIButton()
+    @objc func imageTapped(_ sender: Any) {
         let alertDialog = UIAlertController(title: "Please select photo source", message: nil, preferredStyle: .actionSheet)
         let galleryButton = UIAlertAction(title: "Select photo from photo library", style: .default) { action in
             let picker = UIImagePickerController()
@@ -32,7 +34,7 @@ class AddPostScreenVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func tappedPost(_ sender: Any) {
-        guard (imageView!.image != nil) else {
+        guard (imageView.image != nil) else {
             let alert = UIAlertController(title: "Can't post", message: "You have to pick an image", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
             NSLog("The \"OK\" alert occured.")
@@ -42,8 +44,8 @@ class AddPostScreenVC: UIViewController {
         }
         
          // Just stores name of the image
-        if imageView?.image != nil {
-            DatabaseManager().addPost(id: self.id, label: (textView?.text)!, image: imageView!.image!)
+        if imageView.image != nil {
+            DatabaseManager().addPost(id: self.id, label: (textView.text)!, image: imageView.image!)
         }
 
         guard delegate != nil else {
@@ -62,15 +64,48 @@ class AddPostScreenVC: UIViewController {
     var mainBundlePath = Bundle.main.resourcePath!
     
     override func viewDidLoad() {
+        view.backgroundColor = .white
+        let closeIcon = UIImage(systemName: "xmark")
+        closeButton.imageEdgeInsets = UIEdgeInsets(top: 0,left: 0,bottom: 0,right: 0)
+        closeButton.setImage(closeIcon, for: .normal)
+        closeButton.imageView?.contentMode = .scaleAspectFill
+        view.subviews(closeButton,
+                      imageView,
+                      selectImageButton,
+                      postButton,
+                      textView)
+                
+        selectImageButton.backgroundColor = .systemBlue
+        postButton.backgroundColor = .systemBlue
+        view.layout(50,
+                    closeButton.left(0).height(100).width(100).top(0),
+                    10,
+                    |-10-imageView.fillHorizontally().heightEqualsWidth()-10-|,
+                    |-selectImageButton.fillHorizontally().height(60)-|,
+                    10,
+                    |-textView.fillHorizontally().height(200)-|,
+                    40,
+                    |-20-postButton.fillHorizontally().height(60)-20-|,
+                    50)
+        
+        selectImageButton.Top == view.Top/2
+        selectImageButton.setTitle("Select Image", for: .normal)
+        postButton.setTitle("Post", for: .normal)
+        selectImageButton.addTarget(self, action: #selector(imageTapped(_:)), for: UIControl.Event.touchUpInside)
+        closeButton.addTarget(self, action: #selector(closeButtonTapped(_:)), for: UIControl.Event.touchUpInside)
+        postButton.addTarget(self, action: #selector(tappedPost(_:)), for: UIControl.Event.touchUpInside)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
+        imageView.addGestureRecognizer(tapGesture)
         originalPostButtonColor = postButton.backgroundColor!
         super.viewDidLoad()
         self.configureAddCommentTextView()
+        textView.text = "Please enter text"
+        textView.font = UIFont.systemFont(ofSize: 19.0)
+        
         postButton.isEnabled = false
         print("barva: \(postButton.backgroundColor ?? UIColor.red)")
         postButton.backgroundColor = .gray
-//        print("Barva: \(String(describing: postButton.backgroundColor))")
-        
-        AddImageButton.layer.cornerRadius = 15;
+        selectImageButton.layer.cornerRadius = 15;
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -78,7 +113,7 @@ class AddPostScreenVC: UIViewController {
         if delegate != nil {
             print("Delegate set to: \(delegate!)")
         }
-        if (imageView?.image == nil) {
+        if (imageView.image == nil) {
             //AddImageButton.isHidden = false
         }
     }
@@ -90,25 +125,25 @@ class AddPostScreenVC: UIViewController {
     }
     
     func configureAddCommentTextView() {
-        self.textView?.delegate = self
-        textView?.textColor = .darkGray
-        textView!.layer.cornerRadius = 15;
-        textView!.layer.masksToBounds = true;
-        textView!.layer.borderWidth = 0;
-        textView!.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        textView!.textColor = UIColor.label
-        textView!.layer.borderWidth = 1
-        textView!.layer.borderColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).cgColor
+        self.textView.delegate = self
+        textView.textColor = .darkGray
+        textView.layer.cornerRadius = 15;
+        textView.layer.masksToBounds = true;
+        textView.layer.borderWidth = 0;
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        textView.textColor = UIColor.label
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1).cgColor
     }
 }
 
-extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+extension AddPostViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
-            imageView!.image = image
+            imageView.image = image
             postButton.backgroundColor = originalPostButtonColor
             postButton.isEnabled = true
-            AddImageButton.isHidden = true
+            selectImageButton.isHidden = true
         } else {
             print("None image selected")
         }
@@ -119,7 +154,7 @@ extension AddPostScreenVC: UIImagePickerControllerDelegate & UINavigationControl
     }
 }
 
-extension AddPostScreenVC: UITextViewDelegate {
+extension AddPostViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text.removeAll()
         textView.textColor = .black

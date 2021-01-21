@@ -195,9 +195,7 @@ class DatabaseManager: UIView {
         let imageToShare: UIImage = image
         
         let activityViewController = UIActivityViewController(activityItems: [imageToShare, ShareItemDetails(URL: url)], applicationActivities: nil)
-        
-        
-        
+
         delegateVC.showShareScreen(activityVC: activityViewController)
     }
 }

@@ -26,7 +26,7 @@ class HomeCoordinator: NavigationCoordinator {
     }
     
     func showDetailScreen(id: UUID) {
-        let DetailScreen = DetailScreenVC()
+        let DetailScreen = PostDetailViewController()
         DetailScreen.selectedID = id
 //        DetailScreen.selectedID = id
 //        DetailScreen.delegate = self

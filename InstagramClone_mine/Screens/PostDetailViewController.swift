@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Stevia
 import CoreData
 import RxSwift
 
@@ -13,20 +14,21 @@ protocol DetailDelegate {
     func didSelectRow()
 }
 
-class DetailScreenVC: UIViewController, canShareItem {
+class PostDetailViewController: UIViewController, canShareItem {
     func showShareScreen(activityVC: UIActivityViewController) {
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
-    @IBOutlet weak var postScreenImageView: UIImageView!
-    @IBOutlet weak var postScrenDescriptionLabel: UITextView!
-    @IBOutlet weak var commentsTableView: SelfSizedTableView!
-    @IBOutlet weak var newCommentTextView: UITextView!
-    @IBOutlet weak var descriptionHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var coommentsTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var profilePictureImageView: UIImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var DetailScreenBottomConstraint: NSLayoutConstraint!
+    var shareButton = UIButton()
+    var postScreenImageView = UIImageView()
+    var postScrenDescriptionLabel = UITextView()
+    var commentsTableView = SelfSizedTableView()
+    var newCommentTextView = UITextView()
+//    var descriptionHeightConstraint = NSLayoutConstraint()
+    var coommentsTableViewHeightConstraint = NSLayoutConstraint()
+    var profilePictureImageView = UIImageView()
+    var scrollView = UIScrollView()
+//    var DetailScreenBottomConstraint: NSLayoutConstraint!
     @IBAction func newCommentPublishButtonClicked(_ sender: Any) {
         if (self.newCommentTextView.text.isEmpty) || (self.newCommentTextView.text.contains("Type your comment")) {
             let alert = UIAlertController(title: "Comment cant be empty", message: "Please add your comment", preferredStyle: .alert)
@@ -42,7 +44,7 @@ class DetailScreenVC: UIViewController, canShareItem {
         self.newCommentTextView.text = ("Type your comment")
         self.newCommentTextView.endEditing(true)
     }
-    @IBAction func shareButtonTapped(_ sender: Any) {
+    @objc func shareButtonTapped(_ sender: Any) {
         let imagePath = ImageManager().retrieveFullImagePath(imageName: selectedID!.uuidString)
         
         DatabaseManager().shareItem(delegateVC: self, image: postScreenImageView.image!, url: URL(fileURLWithPath: imagePath))
@@ -75,6 +77,20 @@ class DetailScreenVC: UIViewController, canShareItem {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        
+        view.subviews(postScreenImageView,
+                      shareButton)
+        
+        view.layout(|postScreenImageView.fillHorizontally()|,
+                    shareButton)
+        
+        postScreenImageView.heightEqualsWidth()
+        postScreenImageView.contentMode = .scaleAspectFit
+        shareButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        shareButton.addTarget(self, action: #selector(shareButtonTapped(_:)), for: .touchUpInside)
+        
         
         profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.height / 2;
         profilePictureImageView.layer.masksToBounds = true;
@@ -122,11 +138,11 @@ class DetailScreenVC: UIViewController, canShareItem {
         
         if postScrenDescriptionLabel.text.isEmpty {
             print("Nothing in post description")
-            descriptionHeightConstraint.constant = 0
+//            descriptionHeightConstraint.constant = 0
         } else {
             let newSize = postScrenDescriptionLabel.sizeThatFits(CGSize(width: postScrenDescriptionLabel.frame.size.width, height: .infinity))
             postScrenDescriptionLabel.frame.size = CGSize(width: max(newSize.width, postScrenDescriptionLabel.frame.size.width), height: newSize.height)
-            descriptionHeightConstraint.constant = newSize.height
+//            descriptionHeightConstraint.constant = newSize.height
         }
     }
     
@@ -136,13 +152,13 @@ class DetailScreenVC: UIViewController, canShareItem {
         print("Comments array now contains: \(commentsArray)")
     }
     
-    init() {
-        super.init(nibName: "DetailScreenVC", bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init() {
+//        super.init(nibName: "PostDetailViewController", bundle: nil)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         postScrenDescriptionLabel.sizeToFit()
@@ -150,7 +166,7 @@ class DetailScreenVC: UIViewController, canShareItem {
     }
 }
 
-extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
+extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         commentsArray.count
     }
@@ -186,7 +202,7 @@ extension DetailScreenVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DetailScreenVC: UITextViewDelegate {
+extension PostDetailViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text.removeAll()
     }

@@ -58,7 +58,7 @@ class ProfileVC: UIViewController, showsDetailView {
     }
 
     func moveToDetailView(id: UUID) {
-        let VC1 = DetailScreenVC()
+        let VC1 = PostDetailViewController()
         VC1.delegate = self
         VC1.selectedID = id
         self.navigationController!.pushViewController(VC1, animated: true)

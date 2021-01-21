@@ -25,7 +25,7 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
         let StreamTabIcon = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         StreamTab.navigation.tabBarItem = StreamTabIcon
      
-        let AddPostTab = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
+        let AddPostTab = AddPostViewController()
         let AddPostTabIcon = UITabBarItem(title: "Add post", image: UIImage(systemName: "plus"), tag: 2)
         AddPostTab.tabBarItem = AddPostTabIcon
         
@@ -48,8 +48,8 @@ class MainTabBar: UITabBarController, UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController is AddPostScreenVC {
-            let AddPostVC = AddPostScreenVC(nibName: "AddScreenVC", bundle: nil)
+        if viewController is AddPostViewController {
+            let AddPostVC = AddPostViewController()
             AddPostVC.delegate = self.HomeScreen
             tabBarController.present(AddPostVC, animated: true, completion: nil)
             
